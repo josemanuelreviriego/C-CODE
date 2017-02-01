@@ -34,7 +34,7 @@ const char *reglamento[] = {
 	"papel desautoriza spock",
 	"spock vaporiza piedra",
 	"piedra aplasta a tijeras",
-	"by Sheldon Cooper",
+	"by Sheldon Cooper :D",
 	NULL
 
 };
