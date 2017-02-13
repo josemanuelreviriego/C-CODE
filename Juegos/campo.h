@@ -1,11 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
+#define VERTICAL 10
+#define HORIZONTAL 10
 
-#define VERTICAL 30
-#define HORIZONTAL 80
-
-
-int main (){
+void mesa(){
 
 	char tablero [VERTICAL][HORIZONTAL];
 
@@ -22,21 +18,7 @@ int main (){
 				tablero[VERTICAL][HORIZONTAL] = ' ';
 			
 			printf("%c ",tablero[VERTICAL][HORIZONTAL]);
-
 		}
 	printf("\n");
-
-
 	}
-
-
-
-
-
-
-
-
-
-	return EXIT_SUCCESS;
-
 }

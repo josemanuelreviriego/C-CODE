@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define X 6
 #define Y 6
+#define X 6
 
 void rellenar(char tablero[Y][X]){
 
