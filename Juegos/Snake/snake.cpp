@@ -104,7 +104,7 @@ void imprimir(char tablero[Y][X]){
 void tam_serpiente(char tablero[Y][X],int *tam,int *vida){
 
 
-
+/*
 	if(snake[0].x == 0 || snake[0].x == X-1 || snake[0].y == 0 || snake[0].y == Y-1 )
 		*vida = 0;
 
@@ -130,7 +130,7 @@ void tam_serpiente(char tablero[Y][X],int *tam,int *vida){
 	
 	}
 
-
+*/
 
 }
 
