@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SEGUNDA_VELOCIDAD 1
-#define DIFERENCIA 2.0
+#define TIEMPO_S 1
+#define DIFERENCIA 0.125
 
 
 double x_cuad(double x){
+
 	return x*x;
 
 }
@@ -24,10 +25,10 @@ int main (){
 
 	velocidad = x_cuad(tiempo_1);
 
-	tiempo_2 = tiempo_1 + SEGUNDA_VELOCIDAD;
+	tiempo_2 = tiempo_1 + TIEMPO_S;
 	velocidad_2 = velocidad + DIFERENCIA;
 
-	aceleracion = (tiempo_1 - tiempo_2) / (velocidad_2 - velocidad);
+	aceleracion = (velocidad_2 - velocidad) / ( tiempo_1 - tiempo_2);
 
 
 
