@@ -6,7 +6,7 @@
 
 typedef struct{
 
-	int x;
+	double x;
 	
 }val;
 
@@ -32,27 +32,27 @@ void imprimir_sin_valores(){
 
 }
 
-void pedir_valores(int valores[MAX]){
+void pedir_valores(double valores[MAX]){
 	
 	char valor = RELLENAR;
 
 	printf("¿Valor de f(x)?: ");
-	scanf(" %i",&numero.x);
+	scanf(" %lf",&numero.x);
 
 
 	for (int i = 0; i<MAX; i++){
 
 		printf("¿%c?: ",valor++);
-		scanf(" %i",&valores[i]);
+		scanf(" %lf",&valores[i]);
 		
 	}
 	
 }
 
-int potencia(int elevar,int x){
+double potencia(int elevar,int x){
 
 	int vueltas = 1;
-	int primera_x = x;
+	double primera_x = x;
 		do{
 
 			x = primera_x * x;
@@ -63,9 +63,9 @@ int potencia(int elevar,int x){
 	return x;
 }
 
-void resolver(int valores[MAX]){
+void resolver(double valores[MAX]){
 
-	int x = numero.x;
+	double x = numero.x;
 
 	for(int elevar=0;elevar<MAX; elevar++){
 		if(elevar==0){
@@ -83,16 +83,16 @@ void resolver(int valores[MAX]){
 
 }
 
-void imprimir_valores_finales(int valores[MAX]){	
+void imprimir_valores_finales(double valores[MAX]){	
 
 	for (int i = 0; i<MAX; i++){
 
 		if(i==0){
-			printf("f(%i) = %i + ",numero.x,valores[i]);
+			printf("f(%.0lf) = %.0lf + ",numero.x,valores[i]);
 			i++;	
 		}
 
-		printf("%i ",valores[i]);
+		printf("%.0lf ",valores[i]);
 
 			if( i < MAX-1)
 				printf("+ ");
@@ -104,10 +104,10 @@ void imprimir_valores_finales(int valores[MAX]){
 }
 
 
-int sumar(int valores[MAX]){
+double sumar(double valores[MAX]){
 
 	int pendiente = 0;
-	int suma = 0;
+	double suma = 0;
 
 	do{
 		suma += valores[pendiente];
@@ -121,8 +121,8 @@ int sumar(int valores[MAX]){
 
 int main (){
 
-	int valores[MAX];
-	int suma;
+	double valores[MAX];
+	double suma;
 
 	imprimir_sin_valores();
 	pedir_valores(valores);
@@ -133,7 +133,7 @@ int main (){
 
 	suma = sumar(valores);
 
-	printf("EL resultado es %i\n",suma);
+	printf("EL resultado es %.2lf\n",suma);
 
 	return EXIT_SUCCESS;
 
