@@ -15,9 +15,9 @@
 
 using namespace std;
 
-void borrar (int pos_x,int pos_y,int tecla,bool fin);
+void borrar (int pos_x,int pos_y,int tecla,bool fin,int max_y,int max_x);
 
-void pintar(int pos_x,int pos_y,int tecla,bool fin){
+void pintar(int pos_x,int pos_y,int tecla,bool fin,int max_y,int max_x){
 
   do{
   
@@ -31,47 +31,47 @@ void pintar(int pos_x,int pos_y,int tecla,bool fin){
 	  
           addch('*');
           refresh();
-
+	  
           switch(tecla)
           {
 	            case ARRIBA:
-	               pos_y = (pos_y -1);
+	               pos_y = (pos_y + (max_y - 1)) % max_y;
 	               break;
 
 	            case IZQUIERDA:
-	               pos_x = (pos_x - 1);
+	               pos_x =(pos_x + (max_x - 1)) % max_x;
 	               break;
 
 	            case DERECHA:
-	               pos_x = (pos_x + 1);
+	               pos_x = (pos_x + 1) % max_x;
 	               break;
 
 	            case ABAJO:
-	               pos_y = (pos_y + 1) ;
+	               pos_y = (pos_y + 1) % max_y;
 	               break;
 
 	            case ARRIBA_IZQUIERDA:
-	               pos_y = (pos_y - 1);
-	               pos_x = (pos_x - 1);
+	               pos_y = (pos_y +(max_y - 1)) % max_y;
+	               pos_x = (pos_x + (max_x - 1)) % max_x;
 	               break;
-		       
+		      
 	            case ARRIBA_DERECHA:
-	               pos_y = (pos_y - 1);
-	               pos_x = (pos_x + 1);
+	               pos_y = (pos_y + (max_y -1)) % max_y;
+	               pos_x = (pos_x + 1) % max_x;
 	               break;
 
 	            case ABAJO_IZQUIERDA:
-	               pos_y = (pos_y + 1);
-	               pos_x = (pos_x - 1);
+	               pos_y = (pos_y + 1) % max_y;
+	               pos_x = (pos_x + (max_x -1)) % max_x ;
 	               break;
 
 		    case ABAJO_DERECHA:
-	               pos_y = (pos_y + 1);
-	               pos_x = (pos_x + 1);
+	               pos_y = (pos_y + 1) % max_y;
+	               pos_x = (pos_x + 1) % max_x;
 	               break;
 		
 		    case BORRAR:
-		       borrar(pos_x,pos_y,tecla,fin);
+		       borrar(pos_x,pos_y,tecla,fin,max_y,max_x);
 		       break;
 	            case 27: // tecla ESC
 	               fin = true;
@@ -82,7 +82,7 @@ void pintar(int pos_x,int pos_y,int tecla,bool fin){
 }
 
 
-void borrar (int pos_x,int pos_y,int tecla,bool fin){
+void borrar (int pos_x,int pos_y,int tecla,bool fin,int max_y,int max_x){
 
   do
   {
@@ -135,7 +135,7 @@ void borrar (int pos_x,int pos_y,int tecla,bool fin){
 	               break;
 			
 		    case BORRAR:       
-		       pintar(pos_x,pos_y,tecla,fin);
+		       pintar(pos_x,pos_y,tecla,fin,max_y,max_x);
 		       break;
 
 	            case 27: // tecla ESC
@@ -177,7 +177,7 @@ int main()
   pos_x = max_x / 2;
   pos_y = max_y / 2;
 
-  pintar(pos_x,pos_y,tecla,fin);
+  pintar(pos_x,pos_y,tecla,fin,max_y,max_x);
   
   endwin();
 
