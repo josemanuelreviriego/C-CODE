@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "direcciones.h"
 #include <ncurses.h>
 
 #define ARRIBA '8'
@@ -19,6 +18,14 @@
 #define FICHA '.'
 
 using namespace std;
+
+
+void reiniciar(int pos_y,int pos_x){
+
+        move(pos_y, pos_x);
+        addch('.');
+        refresh();
+}
 
 void pintar(int pos_x,int pos_y,int tecla,bool fin,int max_y,int max_x){
 
