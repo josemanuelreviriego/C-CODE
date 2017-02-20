@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main (){
+
+	const char *cadena_caracteres[]={
+		
+			"Hola Fernando",
+			   "Adios Xavier",
+		    NULL};
+
+
+
+
+	return EXIT_SUCCESS;
+
+}
