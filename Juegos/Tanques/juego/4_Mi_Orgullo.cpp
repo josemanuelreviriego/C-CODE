@@ -19,12 +19,15 @@
 #define CUERPO "~"
 #define RUEDAS "·"
 
+
 struct DisparoCoordenada{
 
 	double x;
 	double y;
 
 };
+
+
 
 void dibujo_tanque(){
 
@@ -80,52 +83,6 @@ void dibujo_tanque2(){
 		
 }
 
-
-void ataque_JA(DisparoCoordenada a,DisparoCoordenada v,DisparoCoordenada s, double t){
-
-	//disparo
-	for ( t=0.; s.y>=-5. ; t+=DELTA){
-	
-	        v.y += a.y * DELTA;
-	        s.y += v.y * DELTA;
-	
-	        v.x += a.x * DELTA;
-	        s.x += v.x * DELTA;
-	
-		clear();
-	        dibujo_tanque();
-		dibujo_tanque2();
-		mvprintw(YC-s.y, XC+s.x, "O"); //(19.5,19.5)	
-	        refresh();
-	        usleep(150000);
-	
-	}
-
-
-}
-
-void ataque_JB(DisparoCoordenada a,DisparoCoordenada v,DisparoCoordenada s, double t){
-
-	//disparo
-	for ( t=0.; s.y>=-5. ; t+=DELTA){
-	
-	        v.y += a.y * DELTA;
-	        s.y += v.y * DELTA;
-	
-	        v.x += a.x * DELTA;
-	        s.x += v.x * DELTA;
-	
-		clear();
-	        dibujo_tanque();
-		dibujo_tanque2();
-		mvprintw(YC-s.y, XC+s.x, "O"); //(19.5,19.5)	
-	        refresh();
-	        usleep(150000);
-	
-	}
-
-
-}
 void texto(int *ammo,int *ammo2){
 
 	//SALIR
@@ -141,6 +98,56 @@ void texto(int *ammo,int *ammo2){
 
 
 }
+
+void ataque_JA(DisparoCoordenada a,DisparoCoordenada v,DisparoCoordenada s, double t,int *municion,int *municion2){
+
+	//disparo
+	for ( t=0.; s.y>=-5. ; t+=DELTA){
+	
+	        v.y += a.y * DELTA;
+	        s.y += v.y * DELTA;
+	
+	        v.x += a.x * DELTA;
+	        s.x += v.x * DELTA;
+	
+		clear();
+		texto(municion,municion2);
+	        dibujo_tanque();
+		dibujo_tanque2();
+		mvprintw(YC-s.y, XC+s.x, "O"); //(19.5,19.5)	
+	        refresh();
+	        usleep(150000);
+	
+	}
+
+
+}
+
+void ataque_JB(DisparoCoordenada a,DisparoCoordenada v,DisparoCoordenada s, double t,int *municion,int *municion2){
+
+	//disparo
+	for ( t=0.; s.y>=-5. ; t+=DELTA){
+	
+	        v.y += a.y * DELTA;
+	        s.y += v.y * DELTA;
+	
+	        v.x += a.x * DELTA;
+	        s.x += v.x * DELTA;
+
+		clear();
+		texto(municion,municion2);
+	        dibujo_tanque();
+		dibujo_tanque2();
+		mvprintw(YC-s.y, XC+s.x, "O"); //(19.5,19.5)	
+	        refresh();
+	        usleep(150000);
+	
+	}
+
+
+}
+
+
 int main (){
 
 	double t = 0;
@@ -150,10 +157,29 @@ int main (){
 
 	bool fin = false;
 
-	struct DisparoCoordenada a[PJ] = {  20.,   -5. },
-				 v[PJ] = {   5.,    5. },
-				 s[PJ] = {   0.,    0. };
+	struct DisparoCoordenada a[PJ],v[PJ],s[PJ];	
 
+	//DATOS A
+
+	a[A].x = 20.; 
+	a[A].y = -5.; 
+    
+	v[A].x = 5.; 
+	v[A].y = 5.; 
+    
+	s[A].x = 0.; 
+	s[A].y = 0.; 
+	
+	//DATOS B	
+	
+	a[B].x = -20.; 
+	a[B].y = -5.; 
+    
+	v[B].x = -5.; 
+	v[B].y = 5.; 
+    
+	s[B].x = 163; 
+	s[B].y = 0.; 
 					
 	initscr(); //Iniciar la pantalla de ncurses
 	curs_set(0); //Para que no se vea lo de escribir
@@ -165,14 +191,14 @@ int main (){
 		
 		texto(&municion,&municion2);
 
-		s[A].y = 0.;
 		s[A].x = 0.;
+		s[A].y = 0.;
 	
 		tecla = getch();
 
 		while(municion > 0 && tecla == 'a'){
 		
-			ataque_JA(a[A],v[A],s[A],t);
+			ataque_JA(a[A],v[A],s[A],t,&municion,&municion2);
 			municion--;
 			tecla = 'q';
 
@@ -181,7 +207,7 @@ int main (){
 
 		while(municion2 > 0 && tecla == 'l'){
 		
-			ataque_JB(a[B],v[B],s[B],t);
+			ataque_JB(a[B],v[B],s[B],t,&municion,&municion2);
 			municion2--;
 			tecla = 'q';
 
