@@ -155,6 +155,7 @@ int main (){
 	int municion = 5;
 	int municion2 = 5;
 
+
 	bool fin = false;
 
 	struct DisparoCoordenada a[PJ],v[PJ],s[PJ];	
