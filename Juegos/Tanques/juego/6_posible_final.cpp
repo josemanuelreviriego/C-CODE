@@ -19,7 +19,6 @@
 #define CUERPO "~"
 #define RUEDAS "·"
 
-
 struct DisparoCoordenada{
 
 	double x;
@@ -78,7 +77,7 @@ void dibujo_tanque2(){
 		mvprintw(24.5,148.5, CUERPO); //(19.5,) DER
 		
 		mvprintw(25.5,148.5, RUEDAS); //(19.5,) C4
-		mvprintw(25.5,145.5, RUEDAS; //(19.5,) A4
+		mvprintw(25.5,145.5, RUEDAS); //(19.5,) A4
 
 		
 }
@@ -92,13 +91,35 @@ void texto(int *ammo,int *ammo2){
 	mvprintw(11.5,19.5, "Pulsa \"a\" para disparar");
 	mvprintw(10.5,19.5, "Te quedan %i balas ",*ammo);
 
+
 	//J2
 	mvprintw(11.5,130., "Pulsa \"l\" para disparar");
-	mvprintw(10.5,130, "Te quedan %i balas ",*ammo2);
+	mvprintw(10.5,130., "Te quedan %i balas ",*ammo2);
+
 
 
 }
 
+
+void pedir_direccion(DisparoCoordenada v){
+
+
+	curs_set(1); //Para que no se vea lo de escribir
+	mvprintw(13.5,18.5, "¿velocidad? (vx,vy) ");
+	scanw(" ( %lf , %lf )", &v.x, &v.y);
+	curs_set(0); //Para que no se vea lo de escribir
+
+}
+
+void pedir_direccion2(DisparoCoordenada v){
+
+
+	curs_set(1); //Para que no se vea lo de escribir
+	mvprintw(13.5,130., "¿velocidad? (vx,vy) ");
+	scanw(" ( %lf , %lf )", &v.x, &v.y);
+	curs_set(0); //Para que no se vea lo de escribir
+
+}
 void ataque_JA(DisparoCoordenada a,DisparoCoordenada v,DisparoCoordenada s, double t,int *municion,int *municion2){
 
 	//disparo
@@ -192,22 +213,28 @@ int main (){
 		
 		texto(&municion,&municion2);
 
-		s[A].x = 0.;
-		s[A].y = 0.;
-	
 		tecla = getch();
 
 		while(municion > 0 && tecla == 'a'){
-		
+
+			v[A].x = 0;
+			v[A].y = 0;
+
+
+			pedir_direccion(v[A]);
 			ataque_JA(a[A],v[A],s[A],t,&municion,&municion2);
 			municion--;
 			tecla = 'q';
 
 		}
-		
+	
 
 		while(municion2 > 0 && tecla == 'l'){
-		
+	
+			v[B].x = 0;
+			v[B].y = 0;
+
+			pedir_direccion2(v[B]);
 			ataque_JB(a[B],v[B],s[B],t,&municion,&municion2);
 			municion2--;
 			tecla = 'q';
