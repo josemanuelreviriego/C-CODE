@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
-#include "tablero.h"
-#include <unistd.h>
+#include "tablero.h" //borde // marcadores // mover_nave // color nave
 
 #define PJ 2
 #define A 0
@@ -30,14 +29,6 @@ void estructura(){
 }
 
 
-void bala(int *rand_y,int *rand_x){
-	
-	
-	mvprintw(*rand_y,*rand_x,".");
-	
-	
-
-}
 
 void espacio(int y,int x){
 
@@ -46,38 +37,26 @@ void espacio(int y,int x){
 	//Fondo de color
 
 	start_color();
-	init_pair(2,COLOR_BLACK,COLOR_BLACK);
+	init_pair(1,COLOR_WHITE,COLOR_BLACK);
+	
+	//estrellas
+	
+	lunas();
+	
 
 	
 }
 
-void disparar(int *tecla,int *y,int *x){
-
-	int rand_x = *x;
-	int rand_y = *y;
-	int veces = 1;
-	
-	rand_y-=1;
-
-	do{
-
-		bala(&rand_y,&rand_x);
-		veces--;
-
-	}while(veces);
-
-}
 
 void iniciar(int *y,int *x,int *tecla,int *nave_y,int *nave_x,int estrellas_y,int estrellas_x){
 
 	do{
+
 		pintar_final(y,x); //tablero.h
 		marcadores(y,x);
 		espacio(estrellas_y,estrellas_x);
 		mover_nave(tecla,nave_y,nave_x); //tablero.h
-		disparar(tecla,nave_y,nave_x);
-		refresh();
-		
+		refresh();	
 	
 	}while(1);
 

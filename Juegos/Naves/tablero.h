@@ -38,13 +38,64 @@ void marcadores(int *y,int *x){
 	mvprintw(*y/15,*x/2.4,"Dificultad: Facil ");
 	
 }
+
+void colores(int *tecla){
+
+	init_pair(2,COLOR_RED,COLOR_BLACK);
+	init_pair(3,COLOR_GREEN,COLOR_BLACK);
+	init_pair(4,COLOR_YELLOW,COLOR_BLACK);
+	init_pair(5,COLOR_BLUE,COLOR_BLACK);
+	init_pair(6,COLOR_MAGENTA,COLOR_BLACK);
+	init_pair(7,COLOR_CYAN,COLOR_BLACK);
+	init_pair(8,COLOR_WHITE,COLOR_BLACK);
+
+	if(*tecla == '1'){
+	
+		attron(COLOR_PAIR(2));
+	
+	}
+
+	if(*tecla == '2'){
+	
+		attron(COLOR_PAIR(3));
+	
+	}
+	if(*tecla == '3'){
+	
+		attron(COLOR_PAIR(4));
+	
+	}
+	if(*tecla == '4'){
+	
+		attron(COLOR_PAIR(5));
+	
+	}
+	if(*tecla == '5'){
+	
+		attron(COLOR_PAIR(6));
+	
+	}
+	if(*tecla == '6'){
+	
+		attron(COLOR_PAIR(7));
+	
+	}
+	if(*tecla == '7'){
+	
+		attron(COLOR_PAIR(8));
+	
+	}
+}
+
 void mover_nave(int *tecla,int *y, int *x){
 
         *tecla = getch();
 
+	colores(tecla);
 
+	
 
-        if(*tecla == DERECHA){
+        if(*tecla == KEY_RIGHT){
 	                clear();
 	                *x+=1;
 	                mvprintw(*y,*x,FICHA1);
@@ -55,7 +106,7 @@ void mover_nave(int *tecla,int *y, int *x){
 
 
 
-        if(*tecla == IZQUIERDA){
+        if(*tecla == KEY_LEFT){
 	                clear();
 	                *x-=1;
 	                mvprintw(*y,*x,FICHA1);
@@ -66,7 +117,7 @@ void mover_nave(int *tecla,int *y, int *x){
 
 
 
-        if(*tecla == ARRIBA){
+        if(*tecla == KEY_UP){
 	                clear();
 	                *y-=1;
 	                mvprintw(*y,*x,FICHA1);
@@ -77,7 +128,7 @@ void mover_nave(int *tecla,int *y, int *x){
 
 
 
-        if(*tecla == ABAJO){
+        if(*tecla == KEY_DOWN){
 	                clear();
 	                *y+=1;
 	                mvprintw(*y,*x,FICHA1);
@@ -85,7 +136,6 @@ void mover_nave(int *tecla,int *y, int *x){
 	                mvprintw(*y+2,*x-2,FICHA3);
 	                *tecla='s';
 	        }
-
 
 
 }
