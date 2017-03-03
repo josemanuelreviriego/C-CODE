@@ -1,2 +1,9 @@
-programa: calculadora.c main.c salida.c funciones.h
-	gcc -c calculadora.c main.c salida.c
+patata: arroz 
+	ls
+
+arroz:
+	mkdir arroz
+
+clean:
+	rm -rf arroz
+
