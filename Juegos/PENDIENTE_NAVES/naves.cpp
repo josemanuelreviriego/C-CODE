@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include "tablero.h" //borde // marcadores // mover_nave // color nave
 
+
 #define PJ 2
 #define A 0
 #define B 1
@@ -41,7 +42,7 @@ void espacio(int y,int x){
 	
 	//estrellas
 	
-	lunas();
+
 	
 
 	
@@ -51,7 +52,7 @@ void espacio(int y,int x){
 void iniciar(int *y,int *x,int *tecla,int *nave_y,int *nave_x,int estrellas_y,int estrellas_x){
 
 	do{
-
+		
 		pintar_final(y,x); //tablero.h
 		marcadores(y,x);
 		espacio(estrellas_y,estrellas_x);
