@@ -4,3 +4,5 @@ github: add
 add:
 	git add .
 
+apagar:
+	shutdown -h now
