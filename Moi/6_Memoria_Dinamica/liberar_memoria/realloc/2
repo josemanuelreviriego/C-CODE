@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define NO 0
+
+void preguntar_notas(double *nota,double *media,int *asignaturas){
+
+
+		do{
+			printf("Nota ");
+			scanf(" %lf",&nota);
+		
+			if(nota >= 0){
+			
+				media = (double *)realloc (media,++asignaturas * sizeof(double));
+				media[asignaturas-1] = nota;
+			
+			}
+		
+		}while(nota >= 0);
+
+
+
+
+}
+
+void imprimir_notas(int *asignaturas,double *media){
+
+
+	for (int i=0; i<*asignaturas; i++){
+
+		printf("Nota %i = %.2lf\n",i+1,media[i]);
+	}
+
+
+}
+
+int main (){
+
+	double *media = NULL;
+	double nota;
+	int asignaturas = 0;
+	int respuesta;
+
+	do{
+
+		preguntar_notas(&nota,media,&asignaturas);
+	
+		imprimir_notas(&asignaturas,media);
+
+		printf("¿Estas de acuerdo con las notas? si = 1 / no = 0");
+		scanf(" %i",&respuesta);
+
+	}while(respuesta == NO);
+
+	return EXIT_SUCCESS;
+
+}

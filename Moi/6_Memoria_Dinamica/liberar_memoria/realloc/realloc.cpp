@@ -19,7 +19,7 @@ int main (){
 	
 	printf("\n");
 
-	nuevo_vector =(int *) realloc(vector,5);
+	nuevo_vector =(int *) realloc(nuevo_vector,5 * sizeof(int));
 	
 	vector[0] = 1;
 
