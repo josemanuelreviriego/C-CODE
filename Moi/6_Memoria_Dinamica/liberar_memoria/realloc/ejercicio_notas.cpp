@@ -19,26 +19,23 @@ int main (){
 
 	double *media = NULL;
 	double nota;
-	int asignaturas = 0;
+	int asignaturas;
 	int respuesta;
-	int media_final = 0;
+	float media_final;
 
 	do{
 
 		//Pedir
 		
-		free(media);
-
-
-
-
+		asignaturas = 0;
+		media_final = 0;
 
 		do{
 			printf("Nota ");
 			scanf(" %lf",&nota);
 		
 			if(nota >= 0){
-			
+
 				media = (double *)realloc (media,++asignaturas * sizeof(double));
 				media[asignaturas-1] = nota;
 			
@@ -66,7 +63,7 @@ int main (){
 	
 	//Imprimir media
 	
-	printf("La media es %i\n",media_final/asignaturas);
+	printf("La media es %.2lf\n",media_final/asignaturas);
 
 	free(media);
 
