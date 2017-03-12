@@ -4,7 +4,7 @@
 
 #include "pantalla_inicio.h"
 
-
+A_inciar_juego(int,int);
 
 
 

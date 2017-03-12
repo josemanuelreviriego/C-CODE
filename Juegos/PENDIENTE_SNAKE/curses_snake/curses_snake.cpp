@@ -1,4 +1,5 @@
 #include <ncurses.h>
+#include "curses_snake.h"
 
 void iniciar_curses(WINDOW *w,int *max_y,int *max_x){
 
@@ -25,12 +26,14 @@ void iniciar_curses(WINDOW *w,int *max_y,int *max_x){
 
 }
 
-void A_iniciar_juego(){
+void A_iniciar_juego(int max_y,int max_x){
+
+	clear();
 
 	do{
 
-	mvprintw(500,500,"asdasd");
-
+		creador(max_y,max_x);
+		refresh();
 
 
 	}while(5==5);
@@ -53,10 +56,7 @@ int main (){
 
 	iniciar_curses(w,&max_y,&max_x);
 	
-	A_iniciar_juego();
-
-
-
+	A_iniciar_juego(max_y,max_x);
 
 	finalizar_curses();
 
