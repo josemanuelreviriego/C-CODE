@@ -8,18 +8,30 @@
 
 void rellenar(char tablero[][MAX],char *letra,char *jugada){
 
-	char numero = 'A';
+	if(*letra == '?' && *letra == '?'){
 
-	for(int i=0; i<MAX; i++){	
-		for(int j=0; j<MAX; j++){
-			tablero[i][j] = numero++;
-	
-		}
+		char numero = 'A';
 
+			for(int i=0; i<MAX; i++){	
+				for(int j=0; j<MAX; j++){
+					tablero[i][j] = numero++;
+				}
+			}
 	}
 
 	if(*letra != '?'){
 	
+		
+		for(int i=0; i<MAX; i++){	
+			for(int j=0; j<MAX; j++){
+
+				if(tablero[i][j] == *jugada)
+					tablero[i][j] = *letra;
+		
+			}
+
+		}
+
 		
 	
 	
