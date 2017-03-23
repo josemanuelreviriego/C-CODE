@@ -6,7 +6,7 @@ void cambiar(char nombre[],char vuelta[],int *cantidad){
 	
 	for (int i=0; i<*cantidad; i++){
 
-		nombre[i] = vuelta[(*cantidad)--];
+		nombre[i] = vuelta[(*cantidad)-i];
 	
 	
 	}
