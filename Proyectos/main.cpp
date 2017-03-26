@@ -30,11 +30,13 @@ void genero_a_registrar(int *gen){
 
 void preguntar(char *nom_serie){
 
+	/*
 	char respueta[8];
 
 	printf("Nombre de la serie ");
-	fgets(respueta,N,stdin);
-/*
+	fgets(respueta,6,stdin);
+
+
 	do{
 
 		printf("La serie introducida es %s \n"
@@ -51,6 +53,11 @@ int main(){
 	int genero;
 	char nom_serie[N];
 	registro animes;
+
+	char respueta[8];
+
+	printf("Nombre de la serie  (MAX %i CARACTERS)",8);
+	fgets(respueta,8,stdin);
 
 	temporadas_a_registrar(&temporadas);
 	genero_a_registrar(&genero);

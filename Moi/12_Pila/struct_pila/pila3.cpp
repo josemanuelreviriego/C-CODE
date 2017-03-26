@@ -61,8 +61,6 @@ int main(){
 		push(&pila,7);
 		push(&pila,8);
 
-	printf("Ultima nota metida %.2lf\n",pop(&pila));
-
 		liberar_espacio(&pila);
 
 	
