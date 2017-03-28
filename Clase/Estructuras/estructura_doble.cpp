@@ -15,13 +15,12 @@ TCoordenadas cambiar_xy(int x, int y){
 	cambiar.fila = 2*x;
 	cambiar.columna = 2*y;
 
-	printf("x = %i\n",cambiar.columna);
-	printf("y = %i\n",cambiar.fila);
+	printf("y = %i\n",cambiar.columna);
+	printf("x = %i\n",cambiar.fila);
 	
 }
 
 int main (){
-
 
 	TCoordenadas coor;
 

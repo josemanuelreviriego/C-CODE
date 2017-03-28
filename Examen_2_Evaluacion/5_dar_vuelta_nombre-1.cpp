@@ -1,27 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void intercambiar(char *nombre,int medida){
+void intercambiar(char *nombre,int *medida){
 
 	char aux;
-	int vueltas = medida;
+	int vueltas = *medida;
 
 	for (int i=0; i<vueltas; i++){
 	
-		aux = nombre[medida--];
-		nombre[vueltas-1] = aux;
-		
-		
+		aux = nombre[];
 
 	
 	}
 
 	printf("\n");
 
-
 }
-
-
 
 int main (){
 
@@ -30,13 +24,9 @@ int main (){
 
 	printf("Original -- %s\n",nombre);
 
-	intercambiar(nombre,medida);
+	intercambiar(nombre,&medida);
 
 	printf("%s\n",nombre);
-
-
-
-
 
 	return EXIT_SUCCESS;
 
