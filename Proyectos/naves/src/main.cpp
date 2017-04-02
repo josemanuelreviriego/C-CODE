@@ -1,19 +1,30 @@
 #include "pila.h"
 #include "reserva.h"
 #include "time.h"
+#include "graficos.h"
+
+
+#include <strings.h>
 
 int main (){
 
 	RegistroNave en_pantalla;
-	en_pantalla.ultima_nave = 0;	
+	en_pantalla.ultima_nave = 0;
+	int max_y,max_x;
+
 	srand(time(NULL));
+	bzero(&en_pantalla,sizeof(en_pantalla));
 
+	iniciar_curses(&en_pantalla,&max_y,&max_x);
+
+		
+	while( ( push (&en_pantalla,reservar(),&max_y,&max_x) ) );
+
+
+
+	empezar_juego(&en_pantalla);
 	
-
-	while((push(&en_pantalla,reservar())));
-
-
-		printf("La nave esta en la poscion %2.lf, %2.lf \n",en_pantalla.en_juego[0]->x, en_pantalla.en_juego[0]->y);
+	
 
 	while( pop(&en_pantalla) );
 

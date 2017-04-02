@@ -11,7 +11,7 @@ OBJS = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 
 $(TARGET): $(OBJS)
-	$(CC) -o $(TARGET) $(CFLAGS) $^
+	$(CC) -o $(TARGET) $(CFLAGS) $^ -lncurses
 
 %.o: %.cpp $(DEPS)
 	$(CC) $(CFLAGS) -c $<

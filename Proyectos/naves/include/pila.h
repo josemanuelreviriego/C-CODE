@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ncurses.h>
 
 #define MAX_NAV 30
 #define PILA_LLENA 0
@@ -13,8 +14,9 @@
 
 typedef struct{
 
-	double x;
-	double y;
+	int x;
+	int y;
+
 
 }DatosNave;
 
@@ -29,8 +31,9 @@ typedef struct{
 extern "C"{
 #endif
 
-	bool push(RegistroNave *pila,DatosNave *naves);
+	bool push(RegistroNave *pila,DatosNave *naves,int *a,int *b);
 	bool pop(RegistroNave *eliminar);
+	void imprimir_nave(RegistroNave *mostrar);
 
 
 
