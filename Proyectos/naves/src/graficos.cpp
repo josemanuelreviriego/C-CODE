@@ -38,6 +38,10 @@ void empezar_juego(RegistroNave *mostrar){
 			mvprintw(mostrar->en_juego[1]->x-mover,mostrar->en_juego[1]->y,"<^·^>");
 			mvprintw(mostrar->en_juego[2]->x-mover,mostrar->en_juego[2]->y,"<^·^>");
 			mvprintw(mostrar->en_juego[3]->x-mover,mostrar->en_juego[3]->y,"<^·^>");
+			mvprintw(mostrar->en_juego[4]->x-mover,mostrar->en_juego[4]->y,"<^·^>");
+			mvprintw(mostrar->en_juego[5]->x-mover,mostrar->en_juego[5]->y,"<^·^>");
+			mvprintw(mostrar->en_juego[6]->x-mover,mostrar->en_juego[6]->y,"<^·^>");
+			mvprintw(mostrar->en_juego[7]->x-mover,mostrar->en_juego[7]->y,"<^·^>");
 
 
 			refresh();
@@ -45,6 +49,10 @@ void empezar_juego(RegistroNave *mostrar){
 			mvprintw(mostrar->en_juego[1]->x-mover,mostrar->en_juego[1]->y,"      ");
 			mvprintw(mostrar->en_juego[2]->x-mover,mostrar->en_juego[2]->y,"      ");
 			mvprintw(mostrar->en_juego[3]->x-mover,mostrar->en_juego[3]->y,"      ");
+			mvprintw(mostrar->en_juego[4]->x-mover,mostrar->en_juego[4]->y,"      ");
+			mvprintw(mostrar->en_juego[5]->x-mover,mostrar->en_juego[5]->y,"      ");
+			mvprintw(mostrar->en_juego[6]->x-mover,mostrar->en_juego[6]->y,"      ");
+			mvprintw(mostrar->en_juego[7]->x-mover,mostrar->en_juego[7]->y,"      ");
 
 
 			mover-= 0.0001;
