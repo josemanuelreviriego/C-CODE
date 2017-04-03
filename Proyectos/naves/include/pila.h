@@ -14,8 +14,8 @@
 
 typedef struct{
 
-	int x;
-	int y;
+	double x;
+	double y;
 
 
 }DatosNave;
@@ -31,7 +31,7 @@ typedef struct{
 extern "C"{
 #endif
 
-	bool push(RegistroNave *pila,DatosNave *naves,int *a,int *b);
+	bool push(RegistroNave *pila,DatosNave *naves,double *a,double *b);
 	bool pop(RegistroNave *eliminar);
 	void imprimir_nave(RegistroNave *mostrar);
 

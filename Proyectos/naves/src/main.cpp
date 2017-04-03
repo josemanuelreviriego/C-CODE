@@ -10,7 +10,7 @@ int main (){
 
 	RegistroNave en_pantalla;
 	en_pantalla.ultima_nave = 0;
-	int max_y,max_x;
+	double max_y,max_x;
 
 	srand(time(NULL));
 	bzero(&en_pantalla,sizeof(en_pantalla));

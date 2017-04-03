@@ -8,7 +8,7 @@ extern "C"{
 #endif
 
 	void iniciar_colores();
-	void iniciar_curses(RegistroNave *mostrar,int *max_y,int *max_x);
+	void iniciar_curses(RegistroNave *mostrar,double *max_y,double *max_x);
 
 	void empezar_juego(RegistroNave *mostrar);
 	void terminar_juego();

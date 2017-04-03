@@ -1,13 +1,12 @@
 #include "pila.h"
 
-bool push(RegistroNave *pila,DatosNave *naves,int *max_x,int *max_y){
+bool push(RegistroNave *pila,DatosNave *naves,double *max_x,double *max_y){
 
 	if(pila->ultima_nave >= MAX_NAV)
 		return PILA_LLENA;
 
-	naves->y = rand() % *max_y;
-	naves->x = rand() % *max_x/2;
-
+	naves->y = rand() % (int)*max_y;
+	naves->x = rand() % (int)*max_x/2;
 
 	pila->en_juego[ pila->ultima_nave++ ] = naves;
 	return NAVE_GUARDADA;
