@@ -1,0 +1,5 @@
+NuevoProyecto: MoverMakefile
+	cp -r ./Skel/src/ ./Skel/include/ ./Skel/dist/ ./Skel/Makefile ./Skel/skel.cpp ./Skel/skel.h ./Actualmente_Programando/ &<
+
+MoverMakefile:
+	mv Makefile ./src
