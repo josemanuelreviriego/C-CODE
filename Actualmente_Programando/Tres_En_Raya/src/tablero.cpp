@@ -1,0 +1,57 @@
+/*
+
+	TABLERO.CPP
+
+*/
+#include "tablero.h"
+
+
+
+void pintar_fila(int f, int w, int puntas_izquierda, int puntas_centros, int cfin, bool space,int *posicion_y,int *posicion_x){
+
+        int vl = 1 + 2 * VSPACE + 1;
+        mvaddch(*posicion_y+vl*f, *posicion_x, puntas_izquierda);
+
+        for(int c=0; c<w-1; c++){
+
+	            for (int r=0; r<HSPACE*2; r++)
+	                addch(ACS_HLINE);
+	            addch(puntas_centros);
+
+	}
+
+        for (int r=0; r<HSPACE*2; r++)
+            addch(ACS_HLINE);
+
+        addch(cfin);
+
+	if (space){
+
+		for(int rv=0; rv<1+VSPACE*2; rv++){
+
+			mvaddch(*posicion_y+vl*f+1+rv, *posicion_x, ACS_VLINE);
+			for(int c=0; c<w; c++){
+
+				for (int r=0; r<HSPACE*2; r++)
+					addch(' ');
+					addch(ACS_VLINE);
+
+			}
+		}
+	}
+
+
+}
+void pintar_tablero(int *y,int *x){
+
+		pintar_fila(0, MAX_MUROS, ACS_ULCORNER, ACS_TTEE, ACS_URCORNER, true,y,x);
+
+
+		for (int i=1; i<MAX_MUROS; i++)
+			pintar_fila(i, MAX_MUROS, ACS_LTEE, ACS_PLUS, ACS_RTEE, true,y,x);
+
+	
+		pintar_fila(MAX_MUROS, MAX_MUROS, ACS_LLCORNER, ACS_BTEE, ACS_LRCORNER, false,y,x);
+
+
+}
