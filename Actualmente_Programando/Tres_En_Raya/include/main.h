@@ -11,6 +11,8 @@
 #include "graficos.h"
 #include "tablero.h"
 #include "juego.h"
+#include "menu.h"
+#include "reglas.h"
 
 //DEFINICIONES
 
@@ -42,8 +44,8 @@ extern "C"{
 
 
 	void preguntar_nombre(DatosJugador *jugadores,int *numero);
-	void nombres(DatosJugador *a,DatosJugador *b);
-
+	void nombres(DatosJugador *a,DatosJugador *b,int y,int x);
+	void autor(int y,int x);
 
 
 #ifdef __cplusplus

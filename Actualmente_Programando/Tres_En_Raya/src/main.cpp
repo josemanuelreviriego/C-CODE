@@ -5,67 +5,14 @@
 */
 #include "main.h"
 
-#define TAM_MENU 30
-
-void dibujar_menu(int *y,int *x){
-
-	for(int i=0; i<TAM_MENU;i++)
-		mvaddch(*y,*x+i,ACS_HLINE);
-
-		mvaddch(*y,*x,ACS_ULCORNER);
-	
-	for(int i=1; i<TAM_MENU;i++)
-		mvaddch(*y+i,*x,ACS_VLINE);
-
-		mvaddch(*y+TAM_MENU,*x,ACS_LLCORNER);
-	
-	for(int i=1; i<TAM_MENU;i++)
-		mvaddch(*y+TAM_MENU,*x+i,ACS_HLINE);
-
-		mvaddch(*y+TAM_MENU,*x+TAM_MENU,ACS_LRCORNER);
-
-	for(int i=1; i<TAM_MENU;i++)
-		mvaddch((*y+TAM_MENU)-i,*x+TAM_MENU,ACS_VLINE);
-
-		mvaddch(*y,*x+TAM_MENU,ACS_URCORNER);
-
-
-}
-
-void opciones_menu(int y,int x,char *eleccion_usuario){
-
-	y+=3;
-	x+=6;
-	
-	mvprintw(y+3,x,"1.-Iniciar Partida ");
-	mvprintw(y+6,x,"2.-Poner Nombre ");
-	mvprintw(y+9,x,"3.-Ver puntuaciones ");
-	mvprintw(y+12,x,"4.-Reglas ");
-	mvprintw(y+15,x,"5.-Autor ");
-	mvprintw(y+18,x,"6.-Salir ");
-	
-	refresh();
-	scanf(" %c",eleccion_usuario);
-
-
-}
-
-void menu(int y,int x,char *eleccion_usuario){
-
-	y-=7.5;
-	x+=1;
-
-	dibujar_menu(&y,&x);
-	opciones_menu(y,x,eleccion_usuario);
-
-}
-
+#define JUGAR '1'
+#define REGLAS '2'
+#define AUTOR '4'
+#define SALIR '5'
 
 
 int main (){
 	
-	char tablero_usuario [MOSTRAR][MOSTRAR];
-	char tablero_programador [NO_MOSTRAR] [NO_MOSTRAR];
 	DatosJugador jugador_x;
 	DatosJugador jugador_o;
 	bool turno;
@@ -84,17 +31,25 @@ int main (){
 		menu(centro_y,centro_x,&eleccion_usuario);
 		refresh();
 
-		if(eleccion_usuario == '1'){
+		if(eleccion_usuario == JUGAR){
 			system("clear");
 			empezar_partida(centro_y,centro_x);
 		}
 
-		if(eleccion_usuario == '2'){
+		if(eleccion_usuario == REGLAS){
 			system("clear");
-			nombres(&jugador_x,&jugador_o);
-
+			reglas(centro_y,centro_x);
 		}
 
+		if(eleccion_usuario == AUTOR){
+			system("clear");
+			autor(centro_y,centro_x);
+		}
+
+		if(eleccion_usuario == SALIR){
+			terminar_curses();
+			return EXIT_SUCCESS;
+		}
 
 
 	}while(true);

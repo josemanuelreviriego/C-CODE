@@ -7,41 +7,43 @@
 #include "main.h"
 #include "tablero.h"
 
-#define DESACUERDO 'n'
+#define DEACUERDO 's'
 
 void preguntar_nombre(DatosJugador *jugadores,int *numero,int *y,int *x){
 
-        mvprintw(*y,*x,"\n\nNombre J%i ",*numero);
-	refresh();
 
+	refresh();
+/*
         scanf(" %s",jugadores->nombre);
 	refresh();
 
-	mvprintw(*y,*x,"Nombre elegido Jugador %i - %s\n\n",(*numero)++,jugadores->nombre);
+	mvprintw(++(*y)/2,*x/2,"Nombre elegido Jugador %i - %s",(*numero)++,jugadores->nombre);
 	refresh();
 
-
+*/
 
 }
 
-void nombres(DatosJugador *a,DatosJugador *b,int *y, int *x){
+void nombres(DatosJugador *a,DatosJugador *b,int y, int x){
 
         char respuesta;
         respuesta = 'n';
         int numero;
 
         do{
-	
+
 	                numero = 1;
-	
-	                preguntar_nombre(a,&numero,y,x);
-	                preguntar_nombre(b,&numero,y,x);
+
+
+	 //               preguntar_nombre(a,&numero,&y,&x);
+	               // preguntar_nombre(b,&numero,&y,&x);
 	  
-	                printw("Estais de acuerdo con los nombres? s/n");
+        mvprintw(60,50,"Nombre J ");
+	               // printw("Estais de acuerdo con los nombres? s/n");
 	                refresh();
 	                scanf(" %c",&respuesta);
 	  
-	        }while(respuesta == DESACUERDO);
+	        }while(respuesta == DEACUERDO);
 
         system("clear");
 
