@@ -36,7 +36,7 @@ void opciones_menu(int y,int x){
 
 	y+=3;
 	x+=6;
-
+	
 	mvprintw(y+3,x,"1.-Iniciar Partida ");
 	mvprintw(y+6,x,"2.-Poner Nombre ");
 	mvprintw(y+9,x,"3.-Ver puntuaciones ");
@@ -48,6 +48,7 @@ void opciones_menu(int y,int x){
 }
 
 void menu(int y,int x){
+
 
 	y-=7.5;
 
@@ -75,14 +76,18 @@ int main (){
 	
 	do{
 
-		menu(centro_y,centro_x);
+		//menu(centro_y,centro_x);
 		refresh();
+
+		//if(menu(centro_y,centro_x) == 1)
+			empezar_partida(centro_y,centro_x);
+			//nombres(&jugador_x,&jugador_o);
 
 	}while(true);
 
-			nombres(&jugador_x,&jugador_o);
+
 			
-		empezar_partida(centro_y,centro_x);
+
 
 	terminar_curses();
 

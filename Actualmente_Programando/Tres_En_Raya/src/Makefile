@@ -1,4 +1,4 @@
-TARGET = nave
+TARGET = raya
 
 CC = g++
 IDIR = ../include
