@@ -32,7 +32,7 @@ void dibujar_menu(int *y,int *x){
 
 }
 
-void opciones_menu(int y,int x){
+void opciones_menu(int y,int x,char *eleccion_usuario){
 
 	y+=3;
 	x+=6;
@@ -43,17 +43,20 @@ void opciones_menu(int y,int x){
 	mvprintw(y+12,x,"4.-Reglas ");
 	mvprintw(y+15,x,"5.-Autor ");
 	mvprintw(y+18,x,"6.-Salir ");
+	
+	refresh();
+	scanf(" %c",eleccion_usuario);
 
 
 }
 
-void menu(int y,int x){
-
+void menu(int y,int x,char *eleccion_usuario){
 
 	y-=7.5;
+	x+=1;
 
 	dibujar_menu(&y,&x);
-	opciones_menu(y,x);
+	opciones_menu(y,x,eleccion_usuario);
 
 }
 
@@ -68,6 +71,8 @@ int main (){
 	bool turno;
 	int max_x,max_y;
 	int centro_x,centro_y;
+	char eleccion_usuario;
+
 
 	srand(time(NULL));
 	turno = rand() %2;
@@ -76,12 +81,21 @@ int main (){
 	
 	do{
 
-		//menu(centro_y,centro_x);
+		menu(centro_y,centro_x,&eleccion_usuario);
 		refresh();
 
-		//if(menu(centro_y,centro_x) == 1)
+		if(eleccion_usuario == '1'){
+			system("clear");
 			empezar_partida(centro_y,centro_x);
-			//nombres(&jugador_x,&jugador_o);
+		}
+
+		if(eleccion_usuario == '2'){
+			system("clear");
+			nombres(&jugador_x,&jugador_o);
+
+		}
+
+
 
 	}while(true);
 
