@@ -19,7 +19,7 @@
 #define MAX_NOMBRE 30
 
 #define NO_MOSTRAR 3
-#define MOSTRAR 5
+#define MOSTRAR 3
 
 #define JUGADOR_X 0
 #define JUGADOR_Y 1

@@ -4,6 +4,7 @@
 
 */
 #include "juego.h"
+#include "ganador.h"
 
 
 void indicar_turno(int y, int x,bool *juega){
@@ -13,71 +14,132 @@ void indicar_turno(int y, int x,bool *juega){
 
 }
 
-void posicion_juego(int y,int x,char *posicion){
+void poner_jugada(int y,int x,char *jugada, char adaptar[MOSTRAR][MOSTRAR],char *ficha,bool *sorteo,int ganador[NO_MOSTRAR][NO_MOSTRAR]){
 
-	scanf(" %c",posicion);
+	scanf(" %c",jugada);
 
-}
+	switch(*jugada){
+	
+		case '1':
+			if(adaptar[0][0] == '1'){
+				adaptar[0][0] = *ficha;
+				ganador[0][0] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 
-void numeros_tablero(int y,int x,char *posicion){
+		case '2':
+			if(adaptar[0][1] == '2'){
+				adaptar[0][1] = *ficha;
+				ganador[0][1] = *sorteo;
+			}
+				
+			else
+				*sorteo^=1;
+			break;
 
-	if(*posicion == 'Z'){
+		case '3':
+			if(adaptar[0][2] == '3'){
+				adaptar[0][2] = *ficha;
+				ganador[0][2] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 
-		mvaddch(y+3,x+5,'1'); //00
-		mvaddch(y+3,x+16,'2'); //01
-		mvaddch(y+3,x+27,'3'); //02
+		case '4':
+			if(adaptar[1][0] == '4'){
+				adaptar[1][0] = *ficha;
+				ganador[1][0] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 
-		mvaddch(y+9,x+5,'4'); //10
-		mvaddch(y+9,x+16,'5'); //11
-		mvaddch(y+9,x+27,'6'); //12
+		case '5':
+			if(adaptar[1][1] == '5'){
+				adaptar[1][1] = *ficha;
+				ganador[1][1] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 
-		mvaddch(y+15,x+5,'7'); //20
-		mvaddch(y+15,x+16,'8'); //21
-		mvaddch(y+15,x+27,'9'); //22
+		case '6':
+			if(adaptar[1][2] == '6'){
+				adaptar[1][2] = *ficha;
+				ganador[1][2] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 
+		case '7':
+			if(adaptar[2][0] == '7'){
+				adaptar[2][0] = *ficha;
+				ganador[2][0] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
+
+		case '8':
+			if(adaptar[2][1] == '8'){
+				adaptar[2][1] = *ficha;
+				ganador[2][1] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
+
+		case '9':
+			if(adaptar[2][2] == '9'){
+				adaptar[2][2] = *ficha;
+				ganador[2][2] = *sorteo;
+			}
+			else
+				*sorteo^=1;
+			break;
 	}
-
-
-	if(*posicion == '1'){
-
-		mvprintw(y+3,x+5,"a"); //00
-		mvaddch(y+3,x+16,'2'); //01
-		mvaddch(y+3,x+27,'3'); //02
-
-		mvaddch(y+9,x+5,'4'); //10
-		mvaddch(y+9,x+16,'5'); //11
-		mvaddch(y+9,x+27,'6'); //12
-
-		mvaddch(y+15,x+5,'7'); //20
-		mvaddch(y+15,x+16,'8'); //21
-		mvaddch(y+15,x+27,'9'); //22
-
-	}
-
-		refresh();
-
 }
-
 
 void empezar_partida(int y, int x){
 
 	bool sorteo;
 	char posicion = 'Z';
+	char jugada;
+	char ficha;
+	int ganador[NO_MOSTRAR][NO_MOSTRAR]={
+
+		{9,9,9},
+		{9,9,9},
+		{9,9,9}
+	
+	};
+	char mi_tablero[MOSTRAR][MOSTRAR] = {
+	
+		{'1','2','3'},
+		{'4','5','6'},
+		{'7','8','9'}
+	
+	};
 
 	srand(time(NULL));
 	sorteo = rand() %2;
 
-
 	do{
 
-		pintar_tablero(&y,&x);	
-
-		numeros_tablero(y,x,&posicion);
-
+		if(sorteo == 0)
+			ficha = 'X';
+		else
+			ficha = 'O';
+		
+		pintar_tablero(&y,&x);
+		numeros_tablero(y,x,mi_tablero);
 		indicar_turno(y,x,&sorteo);
-		posicion_juego(y,x,&posicion);
-
-
+		poner_jugada(y,x,&jugada,mi_tablero,&ficha,&sorteo,ganador);
+		felicitar(ganador);
 
 		sorteo^=1;
 

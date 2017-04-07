@@ -55,3 +55,31 @@ void pintar_tablero(int *y,int *x){
 
 
 }
+
+void numeros_tablero(int y,int x,char adaptar[NO_MOSTRAR][NO_MOSTRAR]){
+
+        int adaptar_fila =3;
+        int adaptar_columna;
+
+
+        for(int fila=0; fila<NO_MOSTRAR;fila++){
+	
+	                adaptar_columna = 5;
+	
+	                for(int columna=0; columna<NO_MOSTRAR; columna++){
+			
+			                        mvprintw(y+adaptar_fila,x+adaptar_columna,"%c",adaptar[fila][columna]); //00
+			                        adaptar_columna+=11;
+			
+			                }
+	
+	                adaptar_fila +=6;
+	
+	        }
+
+        refresh();
+
+}
+
+
+
