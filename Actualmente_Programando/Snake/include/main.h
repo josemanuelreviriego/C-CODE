@@ -1,41 +1,44 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
-	//Liberias y Estructuras
+//Liberias y Estructuras
+
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <ncurses.h>
 
-#define TAM_MAX 80
 
+#define MAX_CUERPO 50
+
+
+//COORDENADAS
 
 typedef struct{
 
-        int coor_x;
         int coor_y;
+        int coor_x;
 
-}CoorCuerpo;
 
+}CoorSerp;
+
+//CUERPO
 
 typedef struct{
 
-        CoorCuerpo *cuerpo[TAM_MAX];
-        int cima;
-
+        CoorSerp *cuerpo[MAX_CUERPO]; //pila
+        int cima;                     //cima
+	int cabeza;		      //cabeza
+               
 }CuerpoSerpiente;
 
+
 typedef struct{
 
-        int avance_x;
-        int avance_y;
-        int frutas_comidas;
-        int puntos_jugador;
+	CoorSerp avanzar;
+	int ordenes;
 
-}MovimientoSerpiente;
-
-
+}Direccion;
 
 
 #ifdef __cplusplus
@@ -43,9 +46,6 @@ extern "C"{
 #endif
 
 	//Funciones
-
-
-	
 
 
 

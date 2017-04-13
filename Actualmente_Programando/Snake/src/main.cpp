@@ -1,67 +1,66 @@
+#include "memoria.h"
+#include "serpiente.h"
+#include "graficos.h"
 #include "main.h"
 
-#define TAM_INICIAL 5
 
-CoorCuerpo *nuevo_cuerpo(int *y,int *x){
+void mostrar(CuerpoSerpiente *serpiente_pantalla){
 
-	CoorCuerpo *nuevo;
-
-	nuevo = (CoorCuerpo *)malloc(sizeof(CoorCuerpo));
-
-	nuevo->coor_y =*y;
-	nuevo->coor_x =(*x)--;
-
-
-
-	return nuevo;
+	for(int i=0; i<serpiente_pantalla->cima; i++)
+		mvprintw(serpiente_pantalla->cuerpo[i]->coor_y,serpiente_pantalla->cuerpo[i]->coor_x,"o");
 
 }
 
+void movimiento_auto(CuerpoSerpiente *serpiente_auto,Direccion *direccion_usuario){
 
-bool push(CuerpoSerpiente *pila,CoorCuerpo *nuevo){
+	for(int i=0; i<serpiente_auto->cima; i++){
 
-	if(pila->cima >= TAM_MAX)
-		return false;
+		serpiente_auto->cuerpo[i]->coor_x += direccion_usuario->avanzar.coor_x;
+		serpiente_auto->cuerpo[i]->coor_y += direccion_usuario->avanzar.coor_y;
 
-	pila->cuerpo[pila->cima++] = nuevo;
-
-	return true;
-
+	}
 }
 
 int main (){
 	
-	WINDOW *w = initscr();
-	int max_y,max_x;
-	int y,x;
 	CuerpoSerpiente serpiente_pantalla;
+		serpiente_pantalla.cima = 0;
+		serpiente_pantalla.cabeza = 0;
+	Direccion serpiente_jugador;
+		serpiente_jugador.avanzar.coor_x = 1;
+		serpiente_jugador.avanzar.coor_y = 0;
 
-	serpiente_pantalla.cima = 0;
 
-	getmaxyx(w,max_y,max_x);
 
+	int max_y,max_x; //Tam maximo de pantalla
+	int y,x; //Mitad de la pantalla
+
+	iniciar_curses(&max_y,&max_x);
 		y = max_y/2;
 		x = max_x/2;
 
-	for(int i=0; i<TAM_INICIAL; i++)
-		push(&serpiente_pantalla,nuevo_cuerpo(&y,&x));
+	cabeza_serpiente(&serpiente_pantalla,NuevoCuerpo(),y,x);
 	
-	for(int i=0; i<TAM_INICIAL; i++)
-		mvprintw(serpiente_pantalla.cuerpo[0]->coor_y,serpiente_pantalla.cuerpo[0]->coor_x,"o");
-
-
-
-
-
-
-
-
-
+	do{
 	
-	refresh();
-	sleep(3);
 
-	endwin();
+		movimiento_auto(&serpiente_pantalla,&serpiente_jugador);
+		mostrar(&serpiente_pantalla);
+		jugador_mueve(&serpiente_pantalla,&serpiente_jugador);
+
+
+
+		
+		
+		refresh();
+		clear();
+
+	}while(1);
+
+
+	terminar_curses();
+	
+	
 
 	return EXIT_SUCCESS;
 

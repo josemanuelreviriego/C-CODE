@@ -1,4 +1,4 @@
-TARGET = snake
+TARGET = serpiente
 
 CC = g++
 IDIR = ../include
