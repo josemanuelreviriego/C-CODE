@@ -33,7 +33,7 @@ void iniciar_curses(int *max_y,int *max_x){
 	curs_set(0);			//Desactiva el cursor
 	noecho();			//No mostrar caracter pulsado
 	keypad(stdscr,1); 		//Activa teclas especiales
-	halfdelay(3);			//getch espera un tiempo
+	halfdelay(1);			//getch espera un tiempo
 	getmaxyx(w,*max_y,*max_x);	//Me devuelve el tamaño máximo de la pantalla
 
 	
