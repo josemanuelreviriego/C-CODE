@@ -14,7 +14,7 @@ extern "C"{
 	//Funciones
 
 	CoorSerp *NuevoCuerpo();
-
+	bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo);
 
 
 #ifdef __cplusplus

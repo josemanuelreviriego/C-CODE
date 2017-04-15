@@ -12,3 +12,10 @@ CoorSerp *NuevoCuerpo(){
 		
 	return nuevos;
 }
+
+bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo){
+
+        serpiente->cuerpo[serpiente->cima++] = NuevoCuerpo;
+
+}
+
