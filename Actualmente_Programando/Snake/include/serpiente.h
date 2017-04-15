@@ -14,7 +14,6 @@ extern "C"{
 	//Funciones
 
 	void cabeza_serpiente(CuerpoSerpiente *serpiente,CoorSerp *Cuerpo,int y,int x);
-	bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo);
 	void jugador_mueve(CuerpoSerpiente *serpiente,DatosSerpiente *serpiente_jugador);
 	void mostrar(CuerpoSerpiente *serpiente_pantalla,DatosFruta *fruta);
 	void movimiento_auto(CuerpoSerpiente *serpiente_auto,DatosSerpiente *direccion_usuario);

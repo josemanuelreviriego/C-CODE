@@ -10,13 +10,6 @@ void cabeza_serpiente(CuerpoSerpiente *serpiente,CoorSerp *Cuerpo,int y,int x){
 
 }
 
-bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo){
-
-        serpiente->cuerpo[serpiente->cima++] = NuevoCuerpo;
-
-}       
-
-
 void movimiento_auto(CuerpoSerpiente *serpiente_auto,DatosSerpiente *direccion_usuario){
 
         for(int i = serpiente_auto->cima-1; i>0; i--){
@@ -41,11 +34,11 @@ void mostrar(CuerpoSerpiente *serpiente_pantalla,DatosFruta *fruta){
 
 	attroff(COLOR_PAIR(3));
 
-	attron(COLOR_PAIR(7));
+	attron(COLOR_PAIR(4));
 
 		mvprintw(fruta->lugar.coor_y,fruta->lugar.coor_x,DIBUJO_FRUTA);
 
-	attroff(COLOR_PAIR(7));
+	attroff(COLOR_PAIR(4));
 
 }
 
@@ -110,5 +103,3 @@ void jugador_mueve(CuerpoSerpiente *serpiente,DatosSerpiente *serpiente_jugador)
 	}
 
 }
-
-
