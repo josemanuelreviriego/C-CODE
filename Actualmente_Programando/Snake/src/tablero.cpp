@@ -13,8 +13,8 @@ void tablero(int y,int x){
 	
 		attron(COLOR_PAIR(7));
 
-		mvaddch(y-i,x-INF_X,ACS_VLINE); //Muro parte derecha
-		mvaddch(y-i,x-SUP_X,ACS_VLINE); //Muro parte IZQUIERDA
+		mvaddch(y-i,x-INF_X,ACS_VLINE); //Muro parte DERECHA --->
+		mvaddch(y-i,x-SUP_X,ACS_VLINE); //Muro parte IZQUIERDA <---
 
 		attron(COLOR_PAIR(7));
 
@@ -30,8 +30,8 @@ void tablero(int y,int x){
 
 		attron(COLOR_PAIR(7));
 
-		mvaddch(y-SUP_Y,x-i-1,ACS_HLINE); //Muro parte de arriba
-		mvaddch(y-INF_Y,x-i-1,ACS_HLINE); //Muro parte de abajo
+		mvaddch(y-SUP_Y,x-i-1,ACS_HLINE); //Muro parte de arriba ---
+		mvaddch(y-INF_Y,x-i-1,ACS_HLINE); //Muro parte de abajo ___
 
 		attron(COLOR_PAIR(7));
 	

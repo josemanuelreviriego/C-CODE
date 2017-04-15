@@ -15,7 +15,7 @@ extern "C"{
 
 	CoorSerp *NuevoCuerpo();
 	bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo);
-
+	bool liberar_memoria(CuerpoSerpiente *liberar);
 
 #ifdef __cplusplus
 }

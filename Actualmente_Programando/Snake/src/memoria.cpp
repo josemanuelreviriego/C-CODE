@@ -19,3 +19,14 @@ bool push(CuerpoSerpiente *serpiente,CoorSerp *NuevoCuerpo){
 
 }
 
+bool liberar_memoria(CuerpoSerpiente *liberar){
+
+	if(liberar->cima <=0)	
+		return false;
+
+	free(liberar->cuerpo[--liberar->cima]);
+	return true;
+	
+
+
+}

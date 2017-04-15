@@ -16,7 +16,7 @@
 #define ARRIBA '8'
 #define ABAJO '2'
 
-#define CUERPO_I 0
+#define CUERPO_I 5
 #define PUNTOS_FRUTA 15
 
 #define DIBUJO_SERPIENTE "*"
@@ -27,7 +27,6 @@
 
 #define INF_X 30
 #define SUP_X 170
-
 
 //COORDENADAS
 
@@ -56,6 +55,7 @@ typedef struct{
 	CoorSerp avanzar;
 	int ordenes;
 	char direccion;
+	bool vida;
 
 }DatosSerpiente;
 

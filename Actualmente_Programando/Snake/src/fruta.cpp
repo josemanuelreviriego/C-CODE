@@ -1,10 +1,17 @@
 #include "fruta.h"
 
+
+void muestra_puntuacion_frutas(DatosFruta *mostrar,int y,int x){
+
+	mvprintw(y-SUP_Y-5,x-SUP_X+60,"Puntuacion %i",mostrar->puntuacion);
+
+}
+
 int coor_fruta_y(int y){
 
         int coordenada;
 
-	coordenada = rand() % ( (y*2)-(INF_Y-2) );
+	coordenada = (rand() % ( (y*2)-(INF_Y-2) ))-1;
 
 	if(coordenada <= ((y*2)-SUP_Y ))
 		coordenada = 30;
@@ -18,7 +25,7 @@ int coor_fruta_x(int x){
 
         int coordenada;
 
-	coordenada = rand() % ( (x*2)-(INF_X-1) );
+	coordenada = (rand() % ( (x*2)-(INF_X-1) ))-1;
 
 	if(coordenada <= ((x*2)-SUP_X ))
 		coordenada = 50;

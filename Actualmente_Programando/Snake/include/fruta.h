@@ -15,7 +15,7 @@ extern "C"{
 	void comprueba_fruta_comida(CuerpoSerpiente *serpiente,DatosFruta *fruta,int y,int x);
 	int coor_fruta_y(int y);
 	int coor_fruta_x(int x);
-
+	void muestra_puntuacion_frutas(DatosFruta *mostrar,int y,int x);
 
 
 #ifdef __cplusplus
