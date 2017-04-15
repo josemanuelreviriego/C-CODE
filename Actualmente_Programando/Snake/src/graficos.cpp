@@ -1,11 +1,3 @@
-/*
-
-	GRAFICOS.CPP 
- 
-*/
-
-
-
 #include "graficos.h"
 
 
