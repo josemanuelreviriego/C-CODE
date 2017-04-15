@@ -18,7 +18,12 @@ void impacto_pared(CuerpoSerpiente *serpiente,int y,int x,DatosSerpiente *serpie
 				serpiente_jugador->vida = false;
 			
 		}
+	}
 
+
+	for(int i=INF_Y; i<SUP_Y; i++){
+	
+	
 		//Muerte derecha
 	        if(serpiente->cuerpo[0]->coor_y == y-i){
 			if(serpiente->cuerpo[0]->coor_x == x-INF_X)

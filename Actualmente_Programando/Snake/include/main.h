@@ -9,6 +9,7 @@
 #include <ncurses.h>
 #include <time.h>
 
+
 #define MAX_CUERPO 500
 
 #define DERECHA '6'
@@ -28,7 +29,7 @@
 #define INF_X 30
 #define SUP_X 170
 
-//COORDENADAS
+#define MAX_PUNTUACION 10
 
 typedef struct{
 
@@ -63,7 +64,7 @@ typedef struct{
 
 	CoorSerp lugar;
 	int puntuacion;
-
+	int punt_total[MAX_PUNTUACION];
 
 }DatosFruta;
 
