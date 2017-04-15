@@ -7,18 +7,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
+#include <time.h>
 
-
-#define MAX_CUERPO 300
+#define MAX_CUERPO 500
 
 #define DERECHA '6'
 #define IZQUIERDA '4'
 #define ARRIBA '8'
 #define ABAJO '2'
 
+#define CUERPO_I 0
+#define PUNTOS_FRUTA 15
+
 #define DIBUJO_SERPIENTE "*"
 #define DIBUJO_FRUTA "+"
 
+#define INF_Y 10
+#define SUP_Y 50
+
+#define INF_X 30
+#define SUP_X 170
 
 
 //COORDENADAS
