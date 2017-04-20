@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/fernando/Escritorio/C-CODE/Juegos/Naves'
+let g:netrw_dirhist_2='/home/fernando/dam/C-CODE/Actualmente_Programando/Tres_En_Raya/src'
+let g:netrw_dirhist_3='/home/fernando/.vim/syntax/jquery.vim'
