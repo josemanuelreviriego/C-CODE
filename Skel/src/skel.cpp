@@ -1,26 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct prueba{
+int invierte(int numero){
 
-	int a;
+        int invertido = 0;
 
-}Prueba;
+        for(;numero>0; invertido*=10, numero/=10)
+                invertido += numero%10;
 
-struct Prueba *nombre(){
-
-	struct Prueba *name;
+        return invertido/10;
 
 
-	return name;
+
 
 }
 
 
-int main (){
+int main(int argc, char *argv[]){
+
+        printf("%i",invierte(atoi(argv[1])));
 	
-	struct (*a)(void);
-	a = nombre;
+        
 
 	
 
