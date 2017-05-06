@@ -27,11 +27,24 @@ void insertar(Nodo **inicio,Nodo **fin,int n){
 
 }
 
+void eliminar(Nodo **inicio,Nodo **fin,int n){
+
+	Nodo *aux = *inicio;
+
+	n = (*inicio)->numero;
+
+
+
+
+
+}
+
+
 int main(){
 
 	Nodo *inicio = NULL;
 	Nodo *fin = NULL;
-	
+
 	insertar(&inicio,&fin,5);
 	insertar(&inicio,&fin,6);
 	insertar(&inicio,&fin,7);
