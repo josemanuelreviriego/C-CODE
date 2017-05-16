@@ -1,4 +1,5 @@
 #include "general.h"
+#include "graficos.h"
 
 #define A 60
 #define B 10
@@ -47,7 +48,7 @@ int main(int argc, char *argv[]){
 	
 		Pantalla coor_pantalla;
 
-		
+		iniciar(&coor_pantalla);	
 
 		do{
 

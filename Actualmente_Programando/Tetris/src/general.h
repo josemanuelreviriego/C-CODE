@@ -3,7 +3,6 @@
 
 	//Liberias y Estructuras
 
-#include "graficos.h"
 #include <stdio.h>
 #include <stdlib.h>
 
