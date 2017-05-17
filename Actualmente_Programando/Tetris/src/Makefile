@@ -1,12 +1,25 @@
+TARGET = tetris
+
 CC = g++
-CFLAGS = -g
+IDIR = ../include
+DDIR = ../dist
 
-OBJS = $(patsubst %.o, %.cpp, $(wildcard *.cpp))
+CFLAGS = -g -I$(IDIR)
 
-EXE = objetos
+DEPS = $(wildcard $(IDIR)/*.h)
+OBJS = $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-$(EXE): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $(EXE) -lncurses
 
-%.o: %.c
-	$(CC) $(CFLAGS) -C $< -lncurses
+$(TARGET): $(OBJS)
+	$(CC) -o $(TARGET) $(CFLAGS) $^ -lncurses
+
+%.o: %.cpp $(DEPS)
+	$(CC) $(CFLAGS) -c $<
+
+.PHONY: clean dist
+
+clean:
+	$(RM) *.o
+
+dist: $(TARGET) clean
+	mv $(TARGET) $(DDIR)
