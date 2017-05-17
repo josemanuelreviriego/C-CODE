@@ -13,17 +13,49 @@ typedef struct{
 		int x;
 		int y;
 
-}CoorPantalla;
-
+}Coordendas;
+/*  
 typedef struct{
-
-		CoorPantalla max;
-		//Interfaz
-		CoorPantalla principio;
-		CoorPantalla fin;
 		
+		Coordendas juego;
+		Coordendas puntuacion;
+		Coordendas pantalla;
 
+}Interfaz;
+*/ 
+typedef struct{
+/*   
+		Interfaz max;
+		Interfaz principio;
+		Interfaz fin;
+
+*/
+		Coordendas max;
+		Coordendas principio;
+		Coordendas fin;
+		
 }Pantalla;
+
+/*
+ 
+prinicio x/y (a)						fin_x (b)
+ a * * * * * * * * * * * * * * * * * * * * b 
+ *   									   *
+ *  a * * * * * * * * * * * * b   a * * b  * 
+ *  *          juego          *   *  p  *  * 
+ *  *                         *   *     *  * 
+ *  *                         *   *     *  * 
+ *  *                         *   *     *  *
+ *  c * * * * * * * * * * * * *   c * * *  * 
+ *  									   *
+ c * * * * * * * * * * * * * * * * * * * * * 
+ fin y (c)	 						
+   			Pantalla 						max x/y
+
+ */
+
+
+
 
 
 #ifdef __cplusplus

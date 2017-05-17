@@ -12,13 +12,14 @@ int main(int argc, char *argv[]){
 		do{
 
 				tablero(pantalla_juego,pantalla_puntuacion);
+				refresh();
 
 		}while(true);
 		
 
 		terminar();
 
-
+		printf("%i,%i",pantalla_juego.fin.x,pantalla_juego.fin.y);
         
 
 
