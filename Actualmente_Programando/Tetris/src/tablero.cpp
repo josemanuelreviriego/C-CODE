@@ -21,51 +21,52 @@ void tam_tablero_juego(Pantalla *juego){
 
 void tam_tablero_puntuacion(Pantalla *puntuacion){
 
-	puntuacion->fin.x = puntuacion->max.x-DERECHA_PUNTUACION;
+   	puntuacion->fin.x = puntuacion->max.x-DERECHA_PUNTUACION;
 	puntuacion->fin.y = puntuacion->max.y-ABAJO_PUNTUACION;
 	puntuacion->principio.x = IZQUIERDA_PUNTUACION;
 	puntuacion->principio.y = ARRIBA_PUNTUACION;
 
+	mvprintw(50,50,"x_o--> %i",puntuacion->principio.x);
+	mvprintw(30,30,"x_f --> %i",puntuacion->fin.x);
+	refresh();
 
 }
 
 void dibuja_tablero(Pantalla juego){
 
-		//Muro inferior		
-		for(int i=0; i<juego.fin.x-juego.principio.x; i++)
-				mvaddch(juego.fin.y,juego.fin.x-i,ACS_HLINE);
-				mvaddch(juego.fin.y,juego.fin.x,ACS_LRCORNER);
-				mvaddch(juego.principio.y,juego.principio.x,ACS_ULCORNER);
+	//Muro inferior		
+	for(int i=0; i<juego.fin.x-juego.principio.x; i++)
+		mvaddch(juego.fin.y,juego.fin.x-i,ACS_HLINE);
+		mvaddch(juego.fin.y,juego.fin.x,ACS_LRCORNER);
+		mvaddch(juego.principio.y,juego.principio.x,ACS_ULCORNER);
 
-		//Muro superior
-		for(int i=0; i<juego.fin.x-juego.principio.x; i++)
-				mvaddch(juego.principio.y,juego.fin.x-i,ACS_HLINE);
-				mvaddch(juego.principio.y,juego.fin.x,ACS_URCORNER);
-				mvaddch(juego.fin.y,juego.principio.x,ACS_LLCORNER);
+	//Muro superior
+	for(int i=0; i<juego.fin.x-juego.principio.x; i++)
+		mvaddch(juego.principio.y,juego.fin.x-i,ACS_HLINE);
+		mvaddch(juego.principio.y,juego.fin.x,ACS_URCORNER);
+		mvaddch(juego.fin.y,juego.principio.x,ACS_LLCORNER);
 
-		//Muro izquierda
-		for(int i=1;i<juego.fin.y-juego.principio.y; i++)
-				mvaddch(juego.principio.y+i,juego.principio.x,ACS_VLINE);
-				
-		//Muro derecha
-		for(int i=1;i<juego.fin.y-juego.principio.y; i++)
-				mvaddch(juego.principio.y+i,juego.fin.x,ACS_VLINE);
+	//Muro izquierda
+	for(int i=1;i<juego.fin.y-juego.principio.y; i++)
+		mvaddch(juego.principio.y+i,juego.principio.x,ACS_VLINE);
+		
+	//Muro derecha
+	for(int i=1;i<juego.fin.y-juego.principio.y; i++)
+		mvaddch(juego.principio.y+i,juego.fin.x,ACS_VLINE);
 
-		refresh();
+	refresh();
 
 }
 
 void tablero(Pantalla juego,Pantalla puntuacion){
 
-		puntuacion.max.x = juego.max.x;
-		puntuacion.max.y = juego.max.y;
+	puntuacion.max.x = juego.max.x;
+	puntuacion.max.y = juego.max.y;
 
-		tam_tablero_juego(&juego);
-		dibuja_tablero(juego);
-		
-		tam_tablero_puntuacion(&puntuacion);
-		dibuja_tablero(puntuacion);
+	tam_tablero_juego(&juego);
+	dibuja_tablero(juego);
 
-
+	tam_tablero_puntuacion(&puntuacion);
+	dibuja_tablero(puntuacion);
 
 }
