@@ -10,6 +10,10 @@
 #define IZQUIERDA_PUNTUACION 150
 #define ARRIBA_PUNTUACION 5
 
+/*  PENDIENTE BUSCAR ALGUNA FORMA PARA QUE LAS 2 SIGUIENTE FUNCIONES SEA SOLO 1
+ *  YA QUE SE ESTA REPITIENDO EL MISMO CODIGO
+ *  */
+
 void tam_tablero_juego(Pantalla *pantalla){
 
 	pantalla->juego.fin.x = pantalla->juego.max.x-DERECHA_JUEGO;
@@ -32,55 +36,29 @@ void tam_tablero_puntuacion(Pantalla *pantalla){
 
 }
 
-//PENDIETE CAMBIAR LA SIGUIENTE FUNCION PARA QUE SEA UNA SOLA Y NO REPETIR CODIGO
-
-void dibuja_tablero(Pantalla pantalla){
+void dibuja_tablero(Interfaz dibujar){
 
 	//JUEGO
 
 	//Muro inferior		
-	for(int i=0; i<pantalla.juego.fin.x-pantalla.juego.principio.x; i++)
-		mvaddch(pantalla.juego.fin.y,pantalla.juego.fin.x-i,ACS_HLINE);
-		mvaddch(pantalla.juego.fin.y,pantalla.juego.fin.x,ACS_LRCORNER);
-		mvaddch(pantalla.juego.principio.y,pantalla.juego.principio.x,ACS_ULCORNER);
+	for(int i=0; i<dibujar.fin.x-dibujar.principio.x; i++)
+		mvaddch(dibujar.fin.y,dibujar.fin.x-i,ACS_HLINE);
+		mvaddch(dibujar.fin.y,dibujar.fin.x,ACS_LRCORNER);
+		mvaddch(dibujar.principio.y,dibujar.principio.x,ACS_ULCORNER);
 
 	//Muro superior
-	for(int i=0; i<pantalla.juego.fin.x-pantalla.juego.principio.x; i++)
-		mvaddch(pantalla.juego.principio.y,pantalla.juego.fin.x-i,ACS_HLINE);
-		mvaddch(pantalla.juego.principio.y,pantalla.juego.fin.x,ACS_URCORNER);
-		mvaddch(pantalla.juego.fin.y,pantalla.juego.principio.x,ACS_LLCORNER);
+	for(int i=0; i<dibujar.fin.x-dibujar.principio.x; i++)
+		mvaddch(dibujar.principio.y,dibujar.fin.x-i,ACS_HLINE);
+		mvaddch(dibujar.principio.y,dibujar.fin.x,ACS_URCORNER);
+		mvaddch(dibujar.fin.y,dibujar.principio.x,ACS_LLCORNER);
 
 	//Muro izquierda
-	for(int i=1;i<pantalla.juego.fin.y-pantalla.juego.principio.y; i++)
-		mvaddch(pantalla.juego.principio.y+i,pantalla.juego.principio.x,ACS_VLINE);
+	for(int i=1;i<dibujar.fin.y-dibujar.principio.y; i++)
+		mvaddch(dibujar.principio.y+i,dibujar.principio.x,ACS_VLINE);
 		
 	//Muro derecha
-	for(int i=1;i<pantalla.juego.fin.y-pantalla.juego.principio.y; i++)
-		mvaddch(pantalla.juego.principio.y+i,pantalla.juego.fin.x,ACS_VLINE);
-
-
-	//PUNTUACION
-
-	//Muro inferior		
-	for(int i=0; i<pantalla.puntuacion.fin.x-pantalla.puntuacion.principio.x; i++)
-		mvaddch(pantalla.puntuacion.fin.y,pantalla.puntuacion.fin.x-i,ACS_HLINE);
-		mvaddch(pantalla.puntuacion.fin.y,pantalla.puntuacion.fin.x,ACS_LRCORNER);
-		mvaddch(pantalla.puntuacion.principio.y,pantalla.puntuacion.principio.x,ACS_ULCORNER);
-
-	//Muro superior
-	for(int i=0; i<pantalla.puntuacion.fin.x-pantalla.puntuacion.principio.x; i++)
-		mvaddch(pantalla.puntuacion.principio.y,pantalla.puntuacion.fin.x-i,ACS_HLINE);
-		mvaddch(pantalla.puntuacion.principio.y,pantalla.puntuacion.fin.x,ACS_URCORNER);
-		mvaddch(pantalla.puntuacion.fin.y,pantalla.puntuacion.principio.x,ACS_LLCORNER);
-
-	//Muro izquierda
-	for(int i=1;i<pantalla.puntuacion.fin.y-pantalla.puntuacion.principio.y; i++)
-		mvaddch(pantalla.puntuacion.principio.y+i,pantalla.puntuacion.principio.x,ACS_VLINE);
-		
-	//Muro derecha
-	for(int i=1;i<pantalla.puntuacion.fin.y-pantalla.puntuacion.principio.y; i++)
-		mvaddch(pantalla.puntuacion.principio.y+i,pantalla.puntuacion.fin.x,ACS_VLINE);
-
+	for(int i=1;i<dibujar.fin.y-dibujar.principio.y; i++)
+		mvaddch(dibujar.principio.y+i,dibujar.fin.x,ACS_VLINE);
 
 	refresh();
 
@@ -90,9 +68,7 @@ void tablero(Pantalla *pantalla){
 
 	tam_tablero_juego(pantalla);
 	tam_tablero_puntuacion(pantalla);
-	dibuja_tablero(*pantalla);
-
-
-
+	dibuja_tablero(pantalla->juego);
+	dibuja_tablero(pantalla->puntuacion);
 
 }
