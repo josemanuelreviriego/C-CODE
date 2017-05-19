@@ -6,34 +6,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 typedef struct{
 
 		int x;
 		int y;
 
 }Coordendas;
-/*  
+
 typedef struct{
 		
-		Coordendas juego;
-		Coordendas puntuacion;
-		Coordendas pantalla;
+	  Coordendas max;
+	  Coordendas principio;
+	  Coordendas fin;
 
 }Interfaz;
-*/ 
-typedef struct{
-/*   
-		Interfaz max;
-		Interfaz principio;
-		Interfaz fin;
 
-*/
+typedef struct{
+
+		Interfaz juego;
+		Interfaz puntuacion;
+		Interfaz principal;
+
+/*  
+ *
 		Coordendas max;
 		Coordendas principio;
 		Coordendas fin;
-		
+
+*/	
 }Pantalla;
 
 /*

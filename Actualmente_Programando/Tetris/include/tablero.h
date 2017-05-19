@@ -11,7 +11,7 @@ extern "C"{
 	//Funciones
 
 
-		void tablero(Pantalla juego,Pantalla puntuacion);
+		void tablero(Pantalla*);
 
 
 

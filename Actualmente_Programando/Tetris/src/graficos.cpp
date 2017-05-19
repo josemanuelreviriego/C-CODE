@@ -16,7 +16,7 @@ void iniciar_colores(){
 }
 
 
-void iniciar(Pantalla *coordendas){
+void iniciar(Pantalla *pantalla){
 
 	WINDOW *w;
 	w = initscr();
@@ -25,8 +25,13 @@ void iniciar(Pantalla *coordendas){
 	noecho();			//No mostrar caracter pulsado
 	keypad(stdscr,1); 		//Activa teclas especiales
 	halfdelay(1);			//getch espera un tiempo
-	getmaxyx(w,coordendas->max.y,coordendas->max.x);	//Me devuelve el tamaño máximo de la pantalla
+	getmaxyx(w,pantalla->principal.max.y,pantalla->principal.max.x);	//Me devuelve el tamaño máximo de la pantalla
 
+	pantalla->puntuacion.max.y = pantalla->principal.max.y;
+	pantalla->puntuacion.max.x = pantalla->principal.max.x;
+
+	pantalla->juego.max.y = pantalla->principal.max.y;
+	pantalla->juego.max.x = pantalla->principal.max.x;
 	
 }
 

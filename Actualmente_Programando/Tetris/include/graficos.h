@@ -14,7 +14,7 @@ extern "C"{
 	//Funciones
 
 
-	void iniciar(Pantalla *a);
+	void iniciar(Pantalla *);
 
 	void terminar();
 
