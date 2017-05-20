@@ -12,37 +12,74 @@
 typedef struct Figura{
 
 		int num_figura;
+		char figura;
 		Coordendas coor;
 		Figura *sig_cuerpo;
 
 }Figura;
 
+typedef struct{
+
+		int cima;
+		Figura *tetris[50];
+
+}Pila;
+
 bool cuerpo_vacio(Figura **primera){return !*primera;}
 
-void construir_figura(Figura **primera,Figura **ultima,int n){
+Figura *construir_figura(Figura **primera,Figura **ultima,int n){
 
-		Figura *nuevo_cuerpo = (Figura *)malloc(sizeof(Figura));
-				nuevo_cuerpo->num_figura = n;
-				nuevo_cuerpo->sig_cuerpo = NULL;
+		*primera = NULL;
+		*ultima = NULL;
 
-		if(cuerpo_vacio(primera))
-				*primera = nuevo_cuerpo;
-		else
-				(*ultima)->sig_cuerpo = nuevo_cuerpo;
+		for(int i=0;i<8;i++){
+				Figura *nuevo_cuerpo = (Figura *)malloc(sizeof(Figura));
+						nuevo_cuerpo->num_figura = n;
+						nuevo_cuerpo->sig_cuerpo = NULL;
+
+				if(cuerpo_vacio(primera))
+						*primera = nuevo_cuerpo;
+				else
+						(*ultima)->sig_cuerpo = nuevo_cuerpo;
 
 
-		*ultima = nuevo_cuerpo;
+				*ultima = nuevo_cuerpo;
+		}
+
+		return *primera;
 
 }
 
+void push(Pila *pila,Figura *figura){
+
+		pila->tetris[pila->cima] = figura;
+		pila->cima++;
+
+}
+
+
 int main(int argc, char *argv[]){
 	
-		Figura *inicio_cuadrado = NULL;
-		Figura *fin_cuadrado = NULL;
-
-		for(int i=0;i<8;i++)
-				construir_figura(&inicio_cuadrado,&fin_cuadrado,i);
+		Figura *inicio= NULL;
+		Figura *fin= NULL;
 		
+		Pila pila;
+			pila.cima = 0;
+
+		for(int i=0; i<50; i++)
+				push(&pila,construir_figura(&inicio,&fin,i));
+
+		for(int i=0; i<50; i++){
+				while(pila.tetris[i] != NULL){
+
+						printf("%i",pila.tetris[i]->num_figura);
+						pila.tetris[i] = pila.tetris[i]->sig_cuerpo;
+
+				}
+				printf("\n");
+		}
+		
+
 		/*
 	
 		Pantalla pantalla;
