@@ -9,56 +9,68 @@
 
 #define MAX 5
 
-typedef struct Figuras{
+typedef struct Figura{
 
+		int num_figura;
 		Coordendas coor;
-		int num_cuerpo;
-		Figuras *cuerpo;
+		Figura *sig_cuerpo;
 
-}Figuras;
+}Figura;
 
-Figuras NuevoCuerpo(Figuras *figura){
+bool cuerpo_vacio(Figura **primera){return !*primera;}
 
-		Figuras *reservar = (Figuras *)malloc(sizeof(Figuras));
-				reservar->cuerpo = NULL;
+void construir_figura(Figura **primera,Figura **ultima,int n){
 
-		if(figura->num_cuerpo <3){
+		Figura *nuevo_cuerpo = (Figura *)malloc(sizeof(Figura));
+				nuevo_cuerpo->num_figura = n;
+				nuevo_cuerpo->sig_cuerpo = NULL;
 
-			reservar->coor.x = figura->coor.x;
-			reservar->coor.y = figura->coor.y+1;
+		if(cuerpo_vacio(primera))
+				*primera = nuevo_cuerpo;
+		else
+				(*ultima)->sig_cuerpo = nuevo_cuerpo;
 
-		}else{
-			
-			reservar->coor.x = figura->coor.x+1;
-			reservar->coor.y = figura->coor.y;
-			
-		}
-		
-		//figura->cuerpo = reservar;
-		figura->num_cuerpo++;
-		
+
+		*ultima = nuevo_cuerpo;
+
 }
-
-
-
 
 int main(int argc, char *argv[]){
 	
+		Figura *inicio_cuadrado = NULL;
+		Figura *fin_cuadrado = NULL;
+
+		for(int i=0;i<8;i++)
+				construir_figura(&inicio_cuadrado,&fin_cuadrado,i);
+		
+		/*
+	
 		Pantalla pantalla;
-		Figuras figura;
-			figura.num_cuerpo = 0;
-			figura.cuerpo = NULL;
-
-		NuevoCuerpo(&figura);
-		
-
-
 		iniciar(&pantalla);	
-		
+
 		do{
 
 				tablero(&pantalla);
 				rellenar(pantalla);
+  
+				attron(COLOR_PAIR(3));
+				
+				mvaddch(50,50,ACS_CKBOARD);
+				mvaddch(50,51,ACS_CKBOARD);
+
+
+				mvaddch(51,50,ACS_CKBOARD);
+				mvaddch(51,51,ACS_CKBOARD);
+
+
+				mvaddch(50,52,ACS_CKBOARD);
+				mvaddch(50,53,ACS_CKBOARD);
+
+				mvaddch(51,52,ACS_CKBOARD);
+				mvaddch(51,53,ACS_CKBOARD);
+				
+				attroff(COLOR_PAIR(3));
+
 				refresh();
 				
 		}while(true);
@@ -73,7 +85,7 @@ int main(int argc, char *argv[]){
 	
 		printf("\200");
 
-
+*/
 	return EXIT_SUCCESS;
 
 }
