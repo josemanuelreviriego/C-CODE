@@ -66,8 +66,7 @@ int main(int argc, char *argv[]){
 		Pila pila;
 			pila.cima = 0;
 
-		for(int i=0; i<50; i++)
-				push(&pila,construir_figura(&inicio,&fin,i));
+		while(pila.cima < 50){push(&pila,construir_figura(&inicio,&fin,pila.cima));};
 
 		for(int i=0; i<50; i++){
 				while(pila.tetris[i] != NULL){
