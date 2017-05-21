@@ -21,10 +21,15 @@ Figura *construir_cuerpo(){
 
 				if(primera_estructura == NULL)
 						primera_estructura = nueva_estructura;
+
 				else
 						ultima_estructura->sig_estructura = nueva_estructura;
-
+	
 				ultima_estructura = nueva_estructura;
+
+
+
+
 		}
 
 		return primera_estructura;
@@ -71,7 +76,7 @@ void rellenar_estructuras(Figura *datos){
 						datos->coor.y = 51;
 				}
 				
-	//			printf("%i\n",datos->num_estructura);
+
 
 				datos = datos->sig_estructura;
 
@@ -103,7 +108,7 @@ void generar_datos(Figura *datos){
 }
 
 
-Figura *construir_figura(int n){
+Figura *construir_figura(){
 
 		Figura *figura = construir_cuerpo();
 		generar_datos(figura);
@@ -117,7 +122,9 @@ Figura *construir_figura(int n){
 void push(Pila *pila,Figura *figura){
 
 		//PENDITE CREAR FUNCION POP
-		pila->tetris[pila->cima] = figura;
-		pila->cima++;
+		pila->tetris[pila->cima++] = figura;
+		
+
+
 
 }

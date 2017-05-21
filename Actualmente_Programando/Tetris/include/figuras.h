@@ -33,7 +33,7 @@ extern "C"{
 
 	//Funciones
 
-		Figura *construir_figura(int n);
+		Figura *construir_figura();
 		void push(Pila *pila,Figura *figura);
 
 
