@@ -2,59 +2,20 @@
 #include "general.h"
 #include "graficos.h"
 #include "tablero.h"
-
 #include "ncurses.h"
+#include "figuras.h"
 
-#include <string.h>
+void pintar_figura(Pila *figura){
 
-#define MAX_PIEZAS 50
-#define PIEZAS_FIGURA 8
-
-typedef struct Figura{
-
-		int num_estructura;
-		char figura;
-		Coordendas coor;
-		Figura *sig_estructura;
-
-}Figura;
-
-typedef struct{
-
-		int cima;
-		Figura *tetris[MAX_PIEZAS];
-
-}Pila;
-
-Figura *construir_figura(int n){
-
-		Figura *primera_estructura = NULL;
-		Figura *ultima_estructura = NULL;
-
-		for(int i=0;i<PIEZAS_FIGURA;i++){
-				Figura *nueva_estructura = (Figura *)malloc(sizeof(Figura));
-						nueva_estructura->num_estructura = n; //Cambiar n por i
-						nueva_estructura->sig_estructura = NULL;
-
-				if(primera_estructura == NULL)
-						primera_estructura = nueva_estructura;
-				else
-						ultima_estructura->sig_estructura = nueva_estructura;
-
-				ultima_estructura = nueva_estructura;
+		attron(COLOR_PAIR(figura->tetris[0]->color));
+		while(figura->tetris[0]->sig_estructura){
+				mvaddch(figura->tetris[0]->coor.y,figura->tetris[0]->coor.x,ACS_CKBOARD);
+				figura->tetris[0] = figura->tetris[0]->sig_estructura;
 		}
-
-		return primera_estructura;
+		mvaddch(figura->tetris[0]->coor.y,figura->tetris[0]->coor.x,ACS_CKBOARD);
+		attroff(COLOR_PAIR(figura->tetris[0]->color));
+		
 }
-
-void push(Pila *pila,Figura *figura){
-
-		//PENDITE CREAR FUNCION POP
-		pila->tetris[pila->cima] = figura;
-		pila->cima++;
-
-}
-
 
 int main(int argc, char *argv[]){
 	
@@ -62,7 +23,7 @@ int main(int argc, char *argv[]){
 			pila.cima = 0;
 
 		while(pila.cima < MAX_PIEZAS){push(&pila,construir_figura(pila.cima));};
-
+/* 
 		for(int i=0; i<MAX_PIEZAS; i++){
 				while(pila.tetris[i] != NULL){
 
@@ -72,9 +33,9 @@ int main(int argc, char *argv[]){
 				}
 				printf("\n");
 		}
-		
+	*/	
 
-		/*
+		
 	
 		Pantalla pantalla;
 		iniciar(&pantalla);	
@@ -83,24 +44,7 @@ int main(int argc, char *argv[]){
 
 				tablero(&pantalla);
 				rellenar(pantalla);
-  
-				attron(COLOR_PAIR(3));
-				
-				mvaddch(50,50,ACS_CKBOARD);
-				mvaddch(50,51,ACS_CKBOARD);
-
-
-				mvaddch(51,50,ACS_CKBOARD);
-				mvaddch(51,51,ACS_CKBOARD);
-
-
-				mvaddch(50,52,ACS_CKBOARD);
-				mvaddch(50,53,ACS_CKBOARD);
-
-				mvaddch(51,52,ACS_CKBOARD);
-				mvaddch(51,53,ACS_CKBOARD);
-				
-				attroff(COLOR_PAIR(3));
+				pintar_figura(&pila);
 
 				refresh();
 				
@@ -116,7 +60,7 @@ int main(int argc, char *argv[]){
 	
 		printf("\200");
 
-*/
+		
 	return EXIT_SUCCESS;
 
 }
