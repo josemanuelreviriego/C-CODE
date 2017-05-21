@@ -7,51 +7,49 @@
 
 #include <string.h>
 
-#define MAX 5
+#define MAX_PIEZAS 50
+#define PIEZAS_FIGURA 8
 
 typedef struct Figura{
 
-		int num_figura;
+		int num_estructura;
 		char figura;
 		Coordendas coor;
-		Figura *sig_cuerpo;
+		Figura *sig_estructura;
 
 }Figura;
 
 typedef struct{
 
 		int cima;
-		Figura *tetris[50];
+		Figura *tetris[MAX_PIEZAS];
 
 }Pila;
 
-bool cuerpo_vacio(Figura **primera){return !*primera;}
+Figura *construir_figura(int n){
 
-Figura *construir_figura(Figura **primera,Figura **ultima,int n){
+		Figura *primera_estructura = NULL;
+		Figura *ultima_estructura = NULL;
 
-		*primera = NULL;
-		*ultima = NULL;
+		for(int i=0;i<PIEZAS_FIGURA;i++){
+				Figura *nueva_estructura = (Figura *)malloc(sizeof(Figura));
+						nueva_estructura->num_estructura = n; //Cambiar n por i
+						nueva_estructura->sig_estructura = NULL;
 
-		for(int i=0;i<8;i++){
-				Figura *nuevo_cuerpo = (Figura *)malloc(sizeof(Figura));
-						nuevo_cuerpo->num_figura = n;
-						nuevo_cuerpo->sig_cuerpo = NULL;
-
-				if(cuerpo_vacio(primera))
-						*primera = nuevo_cuerpo;
+				if(primera_estructura == NULL)
+						primera_estructura = nueva_estructura;
 				else
-						(*ultima)->sig_cuerpo = nuevo_cuerpo;
+						ultima_estructura->sig_estructura = nueva_estructura;
 
-
-				*ultima = nuevo_cuerpo;
+				ultima_estructura = nueva_estructura;
 		}
 
-		return *primera;
-
+		return primera_estructura;
 }
 
 void push(Pila *pila,Figura *figura){
 
+		//PENDITE CREAR FUNCION POP
 		pila->tetris[pila->cima] = figura;
 		pila->cima++;
 
@@ -60,19 +58,16 @@ void push(Pila *pila,Figura *figura){
 
 int main(int argc, char *argv[]){
 	
-		Figura *inicio= NULL;
-		Figura *fin= NULL;
-		
 		Pila pila;
 			pila.cima = 0;
 
-		while(pila.cima < 50){push(&pila,construir_figura(&inicio,&fin,pila.cima));};
+		while(pila.cima < MAX_PIEZAS){push(&pila,construir_figura(pila.cima));};
 
-		for(int i=0; i<50; i++){
+		for(int i=0; i<MAX_PIEZAS; i++){
 				while(pila.tetris[i] != NULL){
 
-						printf("%i",pila.tetris[i]->num_figura);
-						pila.tetris[i] = pila.tetris[i]->sig_cuerpo;
+						printf("%i",pila.tetris[i]->num_estructura);
+						pila.tetris[i] = pila.tetris[i]->sig_estructura;
 
 				}
 				printf("\n");
