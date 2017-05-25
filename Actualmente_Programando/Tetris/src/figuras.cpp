@@ -9,6 +9,12 @@
 #define FIGURA_S 5
 #define FIGURA_T 6
 
+void poner_color(Figura *figura,void *dato){figura->color = *((int *)dato);}
+void poner_figura(Figura *figura,void *dato){figura->figura = *((char *)dato);}
+void poner_coordenadas(Figura *figura,void *coor){figura->coor = *((Coordendas*)coor);}
+void poner_num_estructura(Figura *figura,void *n){figura->num_estructura = *((int*)n);}
+void poner_sig_estructura(Figura *figura,void *vacio){figura = figura->sig_estructura;}
+
 Figura *construir_cuerpo(){
 
 		Figura *primera_estructura = NULL;
@@ -26,9 +32,6 @@ Figura *construir_cuerpo(){
 						ultima_estructura->sig_estructura = nueva_estructura;
 	
 				ultima_estructura = nueva_estructura;
-
-
-
 
 		}
 
@@ -124,7 +127,4 @@ void push(Pila *pila,Figura *figura){
 		//PENDITE CREAR FUNCION POP
 		pila->tetris[pila->cima++] = figura;
 		
-
-
-
 }

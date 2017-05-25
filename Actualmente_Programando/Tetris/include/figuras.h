@@ -5,6 +5,10 @@
 
 #define MAX_PIEZAS 50
 #define PIEZAS_FIGURA 8
+
+#define MAX_DATOS 5
+
+
 #include <general.h>
 
 typedef struct Figura{
@@ -16,6 +20,11 @@ typedef struct Figura{
 		int num_estructura;
 		Figura *sig_estructura;
 
+		void (*poner[MAX_DATOS])(void*);	
+		//PENDIENTE!!! Comprobar que lo siguiente este bien
+		void *(*obtener[MAX_DATOS])(void*);
+
+				
 }Figura;
 
 typedef struct{
@@ -24,6 +33,9 @@ typedef struct{
 		Figura *tetris[MAX_PIEZAS];
 
 }Pila;
+
+
+
 
 
 

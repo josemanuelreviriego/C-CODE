@@ -7,7 +7,6 @@
 
 #define SUELO 300
 
-
 void pintar_figura(Pila *pila){
 
 		while(pila->tetris[0]){
