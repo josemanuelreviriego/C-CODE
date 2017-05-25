@@ -20,7 +20,9 @@ typedef struct Figura{
 		int num_estructura;
 		Figura *sig_estructura;
 
-		void (*poner[MAX_DATOS])(void*);	
+		void (*poner[MAX_DATOS])(Figura*,void*);	
+		void (*p)(Figura*,void*);	
+
 		//PENDIENTE!!! Comprobar que lo siguiente este bien
 		void *(*obtener[MAX_DATOS])(void*);
 

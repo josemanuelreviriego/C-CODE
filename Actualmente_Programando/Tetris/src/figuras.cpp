@@ -24,6 +24,7 @@ Figura *construir_cuerpo(){
 				Figura *nueva_estructura = (Figura *)malloc(sizeof(Figura));
 						nueva_estructura->num_estructura = i; //Cambiar n por i
 						nueva_estructura->sig_estructura = NULL;
+						nueva_estructura->poner[0] = poner_coordenadas;
 
 				if(primera_estructura == NULL)
 						primera_estructura = nueva_estructura;
@@ -41,14 +42,18 @@ Figura *construir_cuerpo(){
 
 void rellenar_estructuras(Figura *datos){
 
+		Coordendas c;
+		c.x = 50;
+		c.y = 50;
+
+
 		while(datos != NULL){
 
 				datos->color = 3;
 				datos->figura = 'o';
 				
 				if(datos->num_estructura == 0){
-						datos->coor.x = 50;
-						datos->coor.y = 50;
+						datos->poner[0](datos,&c);
 				}
 				if(datos->num_estructura == 1){
 						datos->coor.x = 51;
