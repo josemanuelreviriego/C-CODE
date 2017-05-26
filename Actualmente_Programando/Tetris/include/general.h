@@ -8,8 +8,8 @@
 
 typedef struct{
 
-		int x;
-		int y;
+		double x;
+		double y;
 
 }Coordendas;
 
