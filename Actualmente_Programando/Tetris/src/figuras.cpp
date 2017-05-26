@@ -40,18 +40,18 @@ Figura *construir_cuerpo(){
 
 }
 
-void poner_coordenadas_o_s_z(Figura *datos,int figura_s_z){
+void poner_coordenadas_o_s_z(Figura *datos,int figura_s_z,int color){
 
 				int distancia_x = 51;
 				int distancia_y = 30; //Aumentar esta para generar movimiento hacia abajo
 
 				int y_o = distancia_y;
-				int x_o = distancia_x+figura_s_z;
+				int x_o = distancia_x + figura_s_z;
 
 
 		while(datos != NULL){
 
-				datos->color = AQUA;
+				datos->color = color;
 				datos->figura = 'o';
 
 				if(datos->num_estructura == 0){
@@ -96,7 +96,8 @@ void poner_coordenadas_o_s_z(Figura *datos,int figura_s_z){
 		
 }
 
-void poner_coordenadas_i(Figura *datos,int dato){
+
+void poner_coordenadas_i_l_j_t(Figura *datos,int figura_l,int figura_j,int figura_t,int color){
 
 				int distancia_x = 60;
 				int distancia_y = 30; //Aumentar esta para generar movimiento hacia abajo
@@ -107,7 +108,7 @@ void poner_coordenadas_i(Figura *datos,int dato){
 
 		while(datos != NULL){
 
-				datos->color = AQUA;
+				datos->color = color;
 				datos->figura = 'o';
 
 				if(datos->num_estructura == 0){
@@ -136,49 +137,63 @@ void poner_coordenadas_i(Figura *datos,int dato){
 						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 5){
-						datos->coor.x = x_o;
-						datos->coor.y = y_o++;
-				}
-				if(datos->num_estructura == 6){
-						datos->coor.x = x_o;
-						datos->coor.y = y_o;
-				}
-				if(datos->num_estructura == 7){
 						datos->coor.x = x_o--;
 						datos->coor.y = y_o++;
+				}
+
+				if(datos->num_estructura == 6){
+						datos->coor.x = x_o + figura_j +figura_l;
+						datos->coor.y = y_o + figura_j -figura_l/2 -figura_t;
+						x_o++;
+
+				}
+				if(datos->num_estructura == 7){
+						datos->coor.x = x_o-- + figura_j*3 +figura_l;
+						datos->coor.y = y_o++ + figura_j -figura_l/2 - figura_t;
 				}
 			
 				datos = datos->sig_estructura;
 
 		}
-		
+
 }
 
 void generar_datos(Figura *datos){
 
 		srand(time(NULL));
 
-		//switch (rand() % PIEZAS_FIGURA){
 		switch (rand() % PIEZAS_FIGURA){
-/*  
-				case FIGURA_O:
-						poner_coordenadas_o_s_z(datos,0);
-						break;
-						
-				case FIGURA_Z:
-						poner_coordenadas_o_s_z(datos,2);
-						break;
-	
-				case FIGURA_I:
-						poner_coordenadas_i(datos);
-						break;
-						
+
 				case FIGURA_L:
-						poner_coordenadas_i(datos);
+						poner_coordenadas_i_l_j_t(datos,2,0,0,GRIS);
 						break;
-*/						
+
+				case FIGURA_J:
+						poner_coordenadas_i_l_j_t(datos,0,-1,0,ROJO);
+						break;
+
+				case FIGURA_O:
+						poner_coordenadas_o_s_z(datos,0,VERDE);
+						break;
+
+				case FIGURA_I:
+						poner_coordenadas_i_l_j_t(datos,0,0,0,AMARILLO);
+						break;
+
+				case FIGURA_Z:
+						poner_coordenadas_o_s_z(datos,2,AZUL);
+						break;
+
+				case FIGURA_S:
+						poner_coordenadas_o_s_z(datos,-2,MORADO);
+						break;
+
+				case FIGURA_T:
+						poner_coordenadas_i_l_j_t(datos,2,0,1,AQUA);
+						break;
+
 				default:
-						poner_coordenadas_i(datos,2);
+						poner_coordenadas_o_s_z(datos,2,AZUL);
 						break;
 		}
 
@@ -190,9 +205,7 @@ Figura *construir_figura(){
 		Figura *figura = construir_cuerpo();
 		generar_datos(figura);
 		
-
 		return figura;
-
 
 }
 
