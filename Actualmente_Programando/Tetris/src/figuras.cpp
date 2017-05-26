@@ -17,7 +17,7 @@ void poner_num_estructura(Figura *figura,void *n){figura->num_estructura = *((in
 void poner_sig_estructura(Figura *figura,void *vacio){figura = figura->sig_estructura;}
 
 Figura *construir_cuerpo(){
-
+										
 		Figura *primera_estructura = NULL;
 		Figura *ultima_estructura = NULL;
 
