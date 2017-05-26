@@ -24,7 +24,6 @@ Figura *construir_cuerpo(){
 				Figura *nueva_estructura = (Figura *)malloc(sizeof(Figura));
 						nueva_estructura->num_estructura = i; //Cambiar n por i
 						nueva_estructura->sig_estructura = NULL;
-						nueva_estructura->poner[0] = poner_coordenadas;
 
 				if(primera_estructura == NULL)
 						primera_estructura = nueva_estructura;
@@ -40,52 +39,57 @@ Figura *construir_cuerpo(){
 
 }
 
-void rellenar_estructuras(Figura *datos){
 
-		Coordendas c;
-		c.x = 50;
-		c.y = 50;
+void poner_coordenadas(Figura *datos){
+
+				int distancia_x = 51;
+				int distancia_y = 30; //Aumentar esta para generar movimiento hacia abajo
+
+				int y_o = distancia_y;
+				int x_o = distancia_x;
 
 
 		while(datos != NULL){
 
 				datos->color = 3;
 				datos->figura = 'o';
-				
+
 				if(datos->num_estructura == 0){
-						datos->poner[0](datos,&c);
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
+
 				}
 				if(datos->num_estructura == 1){
-						datos->coor.x = 51;
-						datos->coor.y = 50;
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 2){
-						datos->coor.x = 52;
-						datos->coor.y = 50;
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 3){
-						datos->coor.x = 53;
-						datos->coor.y = 50;
+						datos->coor.x = x_o;
+						datos->coor.y = y_o++;
+						x_o = distancia_x;
 				}
+
 				if(datos->num_estructura == 4){
-						datos->coor.x = 50;
-						datos->coor.y = 51;
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 5){
-						datos->coor.x = 51;
-						datos->coor.y = 51;
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 6){
-						datos->coor.x = 52;
-						datos->coor.y = 51;
+						datos->coor.x = x_o++;
+						datos->coor.y = y_o;
 				}
 				if(datos->num_estructura == 7){
-						datos->coor.x = 53;
-						datos->coor.y = 51;
+						datos->coor.x = x_o;
+						datos->coor.y = y_o;
 				}
 				
-
-
 				datos = datos->sig_estructura;
 
 		}
@@ -111,7 +115,7 @@ void generar_datos(Figura *datos){
 		}
 */
 	
-		rellenar_estructuras(datos);
+		poner_coordenadas(datos);
 				
 }
 

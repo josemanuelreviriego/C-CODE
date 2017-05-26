@@ -21,12 +21,7 @@ typedef struct Figura{
 		Figura *sig_estructura;
 
 		void (*poner[MAX_DATOS])(Figura*,void*);	
-		void (*p)(Figura*,void*);	
-
-		//PENDIENTE!!! Comprobar que lo siguiente este bien
-		void *(*obtener[MAX_DATOS])(void*);
-
-				
+		
 }Figura;
 
 typedef struct{
