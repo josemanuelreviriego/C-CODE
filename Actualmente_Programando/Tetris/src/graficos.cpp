@@ -1,5 +1,8 @@
 #include "graficos.h"
 
+
+
+
 void iniciar_colores(){
 
     start_color();
