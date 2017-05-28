@@ -3,38 +3,9 @@
 
 	//Liberias y Estructuras
 
-#define MAX_PIEZAS 50
-#define PIEZAS_FIGURA 8
-
-#define MAX_DATOS 5
-
-
 #include <general.h>
-
-typedef struct Figura{
-
-		int color;
-		char figura;
-		Coordendas coor;
-
-		int num_estructura;
-		Figura *sig_estructura;
-
-		void (*poner[MAX_DATOS])(Figura*,void*);	
-		
-}Figura;
-
-typedef struct{
-
-		int cima;
-		Figura *tetris[MAX_PIEZAS];
-
-}Pila;
-
-
-
-
-
+#include "creacion_figuras.h"
+#include <ncurses.h>
 
 #ifdef __cplusplus
 extern "C"{
@@ -42,10 +13,9 @@ extern "C"{
 
 	//Funciones
 
-		Figura *construir_figura();
-		void push(Pila *pila,Figura *figura);
-
-
+		void pintar_figura(Pila pila);
+		void gravedad_figura(Pila pila);
+		void mover_figura(Pila pila);
 
 #ifdef __cplusplus
 }
