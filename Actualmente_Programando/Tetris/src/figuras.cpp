@@ -10,6 +10,8 @@
 #define FIGURA_S 5
 #define FIGURA_T 6
 
+#define Y_INICIAL 5
+
 void poner_color(Figura *figura,void *dato){figura->color = *((int *)dato);}
 void poner_figura(Figura *figura,void *dato){figura->figura = *((char *)dato);}
 void poner_coordenadas(Figura *figura,void *coor){figura->coor = *((Coordendas*)coor);}
@@ -43,7 +45,7 @@ Figura *construir_cuerpo(){
 void poner_coordenadas_o_s_z(Figura *datos,int figura_s_z,int color){
 
 				int distancia_x = 51;
-				int distancia_y = 30; //Aumentar esta para generar movimiento hacia abajo
+				int distancia_y = Y_INICIAL; //Aumentar esta para generar movimiento hacia abajo
 
 				int y_o = distancia_y;
 				int x_o = distancia_x + figura_s_z;
@@ -96,11 +98,10 @@ void poner_coordenadas_o_s_z(Figura *datos,int figura_s_z,int color){
 		
 }
 
-
 void poner_coordenadas_i_l_j_t(Figura *datos,int figura_l,int figura_j,int figura_t,int color){
 
 				int distancia_x = 60;
-				int distancia_y = 30; //Aumentar esta para generar movimiento hacia abajo
+				int distancia_y = Y_INICIAL;
 
 				int y_o = distancia_y;
 				int x_o = distancia_x;
@@ -198,7 +199,6 @@ void generar_datos(Figura *datos){
 		}
 
 }
-
 
 Figura *construir_figura(){
 
