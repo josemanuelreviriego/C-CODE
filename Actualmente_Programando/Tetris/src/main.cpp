@@ -17,7 +17,6 @@ void pintar_figura(Pila pila){
 				pila.tetris[0] = pila.tetris[0]->sig_estructura;
 		}
 
-					refresh();
 }
 
 void borrar_figura(Pila pila){
@@ -32,12 +31,35 @@ void borrar_figura(Pila pila){
 
 }
 
-void mover_figura(Pila pila){
+void gravedad_figura(Pila pila){
 
 		while(pila.tetris[0]){
-			pila.tetris[0]->coor.y+=0.00001;
+			pila.tetris[0]->coor.y+=0.1;
 			pila.tetris[0] = pila.tetris[0]->sig_estructura;
 		}
+
+}
+
+void mover_figura(Pila pila){
+
+ 	int direccion = getch();
+ 	switch(direccion){
+
+		case KEY_RIGHT:
+			while(pila.tetris[0]){
+				pila.tetris[0]->coor.x+=1.5;
+				pila.tetris[0] = pila.tetris[0]->sig_estructura;
+			}
+			break;
+
+		case KEY_LEFT:
+			while(pila.tetris[0]){
+				pila.tetris[0]->coor.x-=1.5;
+				pila.tetris[0] = pila.tetris[0]->sig_estructura;
+			}
+			break;
+	}
+
 }
 
 int main(int argc, char *argv[]){
@@ -50,26 +72,21 @@ int main(int argc, char *argv[]){
 		Pantalla pantalla;
 		iniciar(&pantalla);	
 
-		int p;
+					if(pila.cima == 0 || pila.tetris[pila.cima]->coor.x == SUELO)
+						push(&pila,construir_figura());
 
 		do{
 
-				tablero(&pantalla);
-				rellenar(pantalla);
+				//tablero(&pantalla); Esta dando conflicto, pendiente ver donde falla
+				//rellenar(pantalla); Igual que arriba
 
-				do{
-
-					if(pila.cima == 0 || pila.tetris[pila.cima]->coor.x == SUELO)
-						push(&pila,construir_figura());
-					
-				mover_figura(pila);
 				pintar_figura(pila);
-				borrar_figura(pila);
-
-				}while(1);
-
-
+				gravedad_figura(pila);
+				mover_figura(pila);
 				
+				//refresh(); Parece que getch() actua como refresh, pendiente confirmarlo
+				clear();
+			
 		}while(true);
 
 
