@@ -1,5 +1,5 @@
 #include "figuras.h"
-#define DESPLAZAMIENTO 0.5
+#define DESPLAZAMIENTO 2
 #define GRAVEDAD 0.5
 
 void pintar_figura(Figura *tetris){
@@ -27,7 +27,7 @@ void pintar_pila(Pila pila){
 
 				} 
 
-			}
+		}
 
 }
 

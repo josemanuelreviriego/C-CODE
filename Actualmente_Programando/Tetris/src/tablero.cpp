@@ -1,8 +1,8 @@
 #include "tablero.h"
 
-#define DERECHA_JUEGO 70
+#define DERECHA_JUEGO 100
 #define ABAJO_JUEGO 5
-#define IZQUIERDA_JUEGO 5
+#define IZQUIERDA_JUEGO 50
 #define ARRIBA_JUEGO 5
 
 #define DERECHA_PUNTUACION 5
