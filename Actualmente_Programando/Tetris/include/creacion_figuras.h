@@ -3,11 +3,10 @@
 
 	//Liberias y Estructuras
 
-#define MAX_PIEZAS 50
+#define MAX_PIEZAS 1000
 #define PIEZAS_FIGURA 8
 
 #define MAX_DATOS 5
-
 
 #include <general.h>
 
@@ -30,11 +29,6 @@ typedef struct{
 		Figura *tetris[MAX_PIEZAS];
 
 }Pila;
-
-
-
-
-
 
 #ifdef __cplusplus
 extern "C"{

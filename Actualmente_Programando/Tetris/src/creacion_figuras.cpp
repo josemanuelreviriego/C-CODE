@@ -212,6 +212,7 @@ Figura *construir_figura(){
 void push(Pila *pila,Figura *figura){
 
 		//PENDITE CREAR FUNCION POP
-		pila->tetris[pila->cima++] = figura;
+		pila->tetris[pila->cima] = figura;
+		pila->cima++;
 		
 }

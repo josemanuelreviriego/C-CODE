@@ -1,44 +1,61 @@
 #include "figuras.h"
-#define VELOCIDAD 1.5
+#define DESPLAZAMIENTO 0.5
 #define GRAVEDAD 0.5
 
-void pintar_figura(Pila pila){
+void pintar_figura(Figura *tetris){
 
-		while(pila.tetris[pila.cima-1]){
+		while(tetris){
 
-				attron(COLOR_PAIR(pila.tetris[pila.cima-1]->color));
-				mvaddch(pila.tetris[pila.cima-1]->coor.y,pila.tetris[pila.cima-1]->coor.x,ACS_CKBOARD);
-				attroff(COLOR_PAIR(pila.tetris[pila.cima-1]->color));
-				pila.tetris[pila.cima-1] = pila.tetris[pila.cima-1]->sig_estructura;
+				attron(COLOR_PAIR(tetris->color));
+				mvaddch(tetris->coor.y,tetris->coor.x,ACS_CKBOARD);
+				attroff(COLOR_PAIR(tetris->color));
+				tetris = tetris->sig_estructura;
 		}
 
 }
 
-void gravedad_figura(Pila pila){
+void pintar_pila(Pila pila){
 
-		while(pila.tetris[pila.cima-1]){
-			pila.tetris[pila.cima-1]->coor.y+=GRAVEDAD;
-			pila.tetris[pila.cima-1] = pila.tetris[pila.cima-1]->sig_estructura;
+		for(int i=0;i<pila.cima;i++){
+
+			while(pila.tetris[i]){
+
+				attron(COLOR_PAIR(pila.tetris[i]->color));
+				mvaddch(pila.tetris[i]->coor.y,pila.tetris[i]->coor.x,ACS_CKBOARD);
+				attroff(COLOR_PAIR(pila.tetris[i]->color));
+				pila.tetris[i] = pila.tetris[i]->sig_estructura;
+
+				} 
+
+			}
+
+}
+
+void gravedad_figura(Figura *tetris){
+
+		while(tetris){
+			tetris->coor.y+=GRAVEDAD;
+			tetris = tetris->sig_estructura;
 		}
 
 }
 
-void mover_figura(Pila pila){
+void mover_figura(Figura *tetris){
 
  	int direccion = getch();
  	switch(direccion){
 
 		case KEY_RIGHT:
-			while(pila.tetris[pila.cima-1]){
-				pila.tetris[pila.cima-1]->coor.x+=VELOCIDAD;
-				pila.tetris[pila.cima-1] = pila.tetris[pila.cima-1]->sig_estructura;
+			while(tetris){
+				tetris->coor.x+=DESPLAZAMIENTO;
+				tetris = tetris->sig_estructura;
 			}
 			break;
 
 		case KEY_LEFT:
-			while(pila.tetris[pila.cima-1]){
-				pila.tetris[pila.cima-1]->coor.x-=VELOCIDAD;
-				pila.tetris[pila.cima-1] = pila.tetris[pila.cima-1]->sig_estructura;
+			while(tetris){
+				tetris->coor.x-=DESPLAZAMIENTO;
+				tetris = tetris->sig_estructura;
 			}
 			break;
 	}

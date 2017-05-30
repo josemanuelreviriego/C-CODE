@@ -13,9 +13,11 @@ extern "C"{
 
 	//Funciones
 
-		void pintar_figura(Pila pila);
-		void gravedad_figura(Pila pila);
-		void mover_figura(Pila pila);
+
+		void pintar_figura(Figura*);
+		void pintar_pila(Pila);
+		void gravedad_figura(Figura*);
+		void mover_figura(Figura*);
 
 #ifdef __cplusplus
 }

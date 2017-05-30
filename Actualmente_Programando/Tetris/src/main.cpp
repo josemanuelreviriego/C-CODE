@@ -6,6 +6,9 @@
 #include "creacion_figuras.h"
 #include "figuras.h"
 
+#define SUELO pantalla.juego.fin.y-3
+#define FIGURA_ACTUAL pila.cima-1
+
 int main(int argc, char *argv[]){
 	
 		Pila pila;
@@ -14,17 +17,25 @@ int main(int argc, char *argv[]){
 
 		iniciar(&pantalla);	
 
+		push(&pila,construir_figura());
+
 		do{
+
 				tablero(&pantalla);
 				rellenar(pantalla);
 
-				if(pila.cima == 0 || pila.tetris[pila.cima-1]->coor.y == pantalla.juego.fin.y-5)
+				if(pila.tetris[FIGURA_ACTUAL]->coor.y == SUELO)
 					push(&pila,construir_figura());
+				
+				pintar_figura(pila.tetris[FIGURA_ACTUAL]);
+				pintar_pila(pila);
 
-				mvprintw(pantalla.juego.fin.y-5,30,"a");
-				pintar_figura(pila);
-				gravedad_figura(pila);
-				mover_figura(pila);
+				mvprintw(SUELO,25,"Pila actual %i",FIGURA_ACTUAL);
+
+				if(pila.tetris[FIGURA_ACTUAL]->coor.y < SUELO)
+					gravedad_figura(pila.tetris[FIGURA_ACTUAL]);
+
+				mover_figura(pila.tetris[FIGURA_ACTUAL]);
 			
 				refresh();
 				clear();
