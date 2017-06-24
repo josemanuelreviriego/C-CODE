@@ -29,7 +29,7 @@ void palabra(const char *p){
 int main(){
 
 	printf("%i\n",suma(10));
-	palabra("fernando");
+	palabra("fernand");
 
 
 

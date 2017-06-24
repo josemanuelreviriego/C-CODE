@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <ctype.h>
 
 #define MAX 7
 #define N 50
