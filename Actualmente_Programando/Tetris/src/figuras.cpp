@@ -4,39 +4,39 @@
 
 void pintar_figura(Figura *tetris){
 
-		while(tetris){
+	while(tetris){
 
-				attron(COLOR_PAIR(tetris->color));
-				mvaddch(tetris->coor.y,tetris->coor.x,ACS_CKBOARD);
-				attroff(COLOR_PAIR(tetris->color));
-				tetris = tetris->sig_estructura;
-		}
+			attron(COLOR_PAIR(tetris->color));
+			mvaddch(tetris->coor.y,tetris->coor.x,ACS_CKBOARD);
+			attroff(COLOR_PAIR(tetris->color));
+			tetris = tetris->sig_estructura;
+	}
 
 }
 
 void pintar_pila(Pila pila){
 
-		for(int i=0;i<pila.cima;i++){
+	for(int i=0;i<pila.cima;i++){
 
-			while(pila.tetris[i]){
+		while(pila.tetris[i]){
 
-				attron(COLOR_PAIR(pila.tetris[i]->color));
-				mvaddch(pila.tetris[i]->coor.y,pila.tetris[i]->coor.x,ACS_CKBOARD);
-				attroff(COLOR_PAIR(pila.tetris[i]->color));
-				pila.tetris[i] = pila.tetris[i]->sig_estructura;
+			attron(COLOR_PAIR(pila.tetris[i]->color));
+			mvaddch(pila.tetris[i]->coor.y,pila.tetris[i]->coor.x,ACS_CKBOARD);
+			attroff(COLOR_PAIR(pila.tetris[i]->color));
+			pila.tetris[i] = pila.tetris[i]->sig_estructura;
 
-				} 
+			} 
 
-		}
+	}
 
 }
 
 void gravedad_figura(Figura *tetris){
 
-		while(tetris){
-			tetris->coor.y+=GRAVEDAD;
-			tetris = tetris->sig_estructura;
-		}
+	while(tetris){
+		tetris->coor.y+=GRAVEDAD;
+		tetris = tetris->sig_estructura;
+	}
 
 }
 
