@@ -9,7 +9,9 @@
 #define M	0x10
 #define PROMPT	"MA-TEOS$> "
 
+
 #define FALLO_EJECUCION "No he podido ejecutar: %s\n",argv[0]
+
 
 void spawn(char buffer[]){
 
@@ -21,6 +23,10 @@ void spawn(char buffer[]){
 
 	while(argv[i++] = strtok(buffer, " "))
 		buffer = NULL;
+
+	//if(i == 1)
+		strtok (argv[i-2],"\n");
+		
 
 	/*
 	 
@@ -37,6 +43,7 @@ void spawn(char buffer[]){
 	execvp(argv[0],argv);
 	fprintf(stderr,FALLO_EJECUCION);
 	exit(1);
+
 }
 
 
