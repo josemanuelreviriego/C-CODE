@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
 	char usuario[20] = "FSilva";
 	int edad 	 = 21;
 	
-	const char* const opciones_cortas = "hue";
+	const char* opciones_cortas = "hue";
 	const struct option opciones_largas[] ={
 		{"help",	0,NULL,	'h'},
 		{"user",	0,NULL,	'u'},
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
 		switch(opcion = getopt_long(argc,argv,opciones_cortas,opciones_largas,NULL)){
 
 			case 'h':
-				imprime_uso(stdout,0);
+				imprime_uso(stdout,EXIT_SUCCESS);
 				break;
 
 			case 'u':
@@ -49,11 +49,10 @@ int main(int argc, char *argv[]){
 
 			default:
 				printf("fallo escribe -h / --help despues del nombre del programa");
-				break;
 				
 		}
 
 	}while(opcion != -1);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
