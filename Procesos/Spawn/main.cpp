@@ -24,17 +24,8 @@ void spawn(char buffer[]){
 	while(argv[i++] = strtok(buffer, " "))
 		buffer = NULL;
 
-	//if(i == 1)
 		strtok (argv[i-2],"\n");
 		
-
-	/*
-	 
-	mijo = fork();
-	if(mijo)
-		return; 
-	 */
-
 	if ( miHijo = fork() )
 		return;
 
